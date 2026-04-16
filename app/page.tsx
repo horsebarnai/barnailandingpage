@@ -12,8 +12,8 @@ export default function LandingPage() {
     <main className="min-h-screen bg-black">
       <Header />
       <Hero />
-      <ShowcaseTabs />
       <DataMoat />
+      <ShowcaseTabs />
       <CTASection />
       <Footer />
     </main>
