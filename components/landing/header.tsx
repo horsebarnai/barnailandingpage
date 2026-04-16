@@ -27,15 +27,15 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3">
-            <div className="relative w-8 h-8 flex items-center justify-center">
-              <svg viewBox="0 0 32 32" className="w-8 h-8" fill="none">
-                <rect x="4" y="20" width="24" height="10" rx="3" fill="#4ADE80" />
-                <rect x="6" y="14" width="20" height="4" rx="1" fill="#4ADE80" opacity="0.8" />
-                <rect x="8" y="10" width="16" height="3" rx="1" fill="#4ADE80" opacity="0.6" />
-              </svg>
-            </div>
-            <span className="text-xl font-bold tracking-tight text-white">barn ai</span>
+          <Link href="/" className="flex items-center">
+            <Image
+              src="/logo.png"
+              alt="Barn AI"
+              width={120}
+              height={40}
+              className="h-8 w-auto object-contain"
+              priority
+            />
           </Link>
 
           {/* Desktop Navigation */}

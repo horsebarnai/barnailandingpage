@@ -110,7 +110,7 @@ export function Hero() {
               </div>
               <div className="flex-1 flex justify-center">
                 <div className="px-4 py-1 bg-zinc-800 rounded-md text-xs text-zinc-500">
-                  app.barnai.com
+                  horsebarn.ai
                 </div>
               </div>
             </div>

@@ -117,69 +117,82 @@ export function ShowcaseTabs() {
       </motion.div>
 
       {/* Content Area */}
-      <div className="max-w-7xl mx-auto">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeFeature.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.4 }}
-            className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center"
-          >
-            {/* Left: Text Content */}
-            <div className="order-2 lg:order-1">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6">
-                <activeFeature.icon className="w-4 h-4 text-emerald-400" />
-                <span className="text-sm text-emerald-400 font-medium">{activeFeature.name}</span>
-              </div>
-              
-              <h3 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">
-                {activeFeature.headline}
-              </h3>
-              
-              <p className="text-lg text-zinc-400 leading-relaxed mb-8">
-                {activeFeature.description}
-              </p>
-
-              {/* Stats */}
-              <div className="flex gap-8">
-                {activeFeature.stats.map((stat, idx) => (
-                  <div key={idx}>
-                    <div className="text-2xl sm:text-3xl font-bold text-emerald-400 mb-1">
-                      {stat.value}
-                    </div>
-                    <div className="text-sm text-zinc-500">{stat.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Right: Screenshot */}
-            <div className="order-1 lg:order-2">
-              <div className="relative">
-                {/* Glow */}
-                <div className="absolute inset-0 bg-emerald-500/20 rounded-3xl blur-2xl transform scale-95" />
+      <div className="max-w-5xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          {/* Left: Text Content */}
+          <div className="order-2 lg:order-1">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={`text-${activeFeature.id}`}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: 20 }}
+                transition={{ duration: 0.35, ease: "easeInOut" }}
+              >
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6">
+                  <activeFeature.icon className="w-4 h-4 text-emerald-400" />
+                  <span className="text-sm text-emerald-400 font-medium">{activeFeature.name}</span>
+                </div>
                 
-                {/* Phone Frame */}
-                <div className="relative bg-zinc-900 rounded-[2.5rem] p-3 border border-zinc-800 shadow-2xl transform lg:rotate-2 hover:rotate-0 transition-transform duration-500">
-                  <div className="relative overflow-hidden rounded-[2rem] bg-black">
-                    {/* Notch */}
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-7 bg-black rounded-b-2xl z-10" />
-                    
-                    <Image
-                      src={activeFeature.image}
-                      alt={activeFeature.headline}
-                      width={380}
-                      height={700}
-                      className="w-full h-auto"
-                    />
-                  </div>
+                <h3 className="text-3xl sm:text-4xl font-bold text-white mb-6 tracking-tight">
+                  {activeFeature.headline}
+                </h3>
+                
+                <p className="text-lg text-zinc-400 leading-relaxed mb-8">
+                  {activeFeature.description}
+                </p>
+
+                {/* Stats */}
+                <div className="flex gap-8">
+                  {activeFeature.stats.map((stat, idx) => (
+                    <div key={idx}>
+                      <div className="text-2xl sm:text-3xl font-bold text-emerald-400 mb-1">
+                        {stat.value}
+                      </div>
+                      <div className="text-sm text-zinc-500">{stat.label}</div>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Right: Screenshot - Strictly Constrained */}
+          <div className="order-1 lg:order-2 flex justify-center">
+            <div className="relative w-full max-w-xs">
+              {/* Glow */}
+              <div className="absolute inset-0 bg-emerald-500/20 rounded-3xl blur-2xl transform scale-95" />
+              
+              {/* Phone Frame */}
+              <div className="relative bg-zinc-900 rounded-[2.5rem] p-2 border border-white/10 shadow-2xl overflow-hidden">
+                <div className="relative overflow-hidden rounded-[2rem] bg-black aspect-[9/19]">
+                  {/* Notch */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/3 h-6 bg-black rounded-b-2xl z-10" />
+                  
+                  <AnimatePresence mode="wait">
+                    <motion.div
+                      key={`image-${activeFeature.id}`}
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 1.05 }}
+                      transition={{ duration: 0.35, ease: "easeInOut" }}
+                      className="w-full h-full"
+                    >
+                      <Image
+                        src={activeFeature.image}
+                        alt={activeFeature.headline}
+                        width={320}
+                        height={680}
+                        className="w-full h-full object-cover object-top"
+                        priority
+                      />
+                    </motion.div>
+                  </AnimatePresence>
                 </div>
               </div>
             </div>
-          </motion.div>
-        </AnimatePresence>
+          </div>
+        </div>
       </div>
     </section>
   )
