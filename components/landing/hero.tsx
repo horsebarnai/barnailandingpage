@@ -1,7 +1,7 @@
 "use client"
 
-import { useRef } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { useRef, useState } from "react"
+import { motion, useScroll, useTransform, useMotionValue, useSpring } from "framer-motion"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Play } from "lucide-react"
@@ -14,17 +14,50 @@ const screens = [
 
 export function Hero() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const browserRef = useRef<HTMLDivElement>(null)
+  
+  // Mouse position for 3D tilt effect
+  const mouseX = useMotionValue(0)
+  const mouseY = useMotionValue(0)
+  
+  // Smooth spring physics for tilt
+  const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [8, -8]), { stiffness: 300, damping: 30 })
+  const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-8, 8]), { stiffness: 300, damping: 30 })
+  
+  // Glare position
+  const glareX = useSpring(useTransform(mouseX, [-0.5, 0.5], [0, 100]), { stiffness: 300, damping: 30 })
+  const glareY = useSpring(useTransform(mouseY, [-0.5, 0.5], [0, 100]), { stiffness: 300, damping: 30 })
+  
+  const [isHovering, setIsHovering] = useState(false)
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"]
   })
 
-  // Map scroll progress (0-1) to active screen index (0, 1, 2)
-  const activeIndex = useTransform(scrollYProgress, [0, 0.33, 0.66, 1], [0, 0, 1, 2])
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!browserRef.current) return
+    
+    const rect = browserRef.current.getBoundingClientRect()
+    const centerX = rect.left + rect.width / 2
+    const centerY = rect.top + rect.height / 2
+    
+    // Normalized position from -0.5 to 0.5
+    const x = (e.clientX - centerX) / rect.width
+    const y = (e.clientY - centerY) / rect.height
+    
+    mouseX.set(x)
+    mouseY.set(y)
+  }
+
+  const handleMouseLeave = () => {
+    setIsHovering(false)
+    mouseX.set(0)
+    mouseY.set(0)
+  }
 
   return (
-    <div ref={containerRef} className="relative" style={{ height: "250vh" }}>
+    <div ref={containerRef} className="relative" style={{ height: "280vh" }}>
       <section className="sticky top-0 min-h-screen flex flex-col items-center justify-center pt-20 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Background Glow Effects */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -105,18 +138,30 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Device Mockup with Cover Flow Carousel */}
+        {/* Device Mockup with Z-Axis Depth Stack */}
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.7 }}
           className="relative z-10 mt-16 sm:mt-20 w-full max-w-4xl mx-auto"
+          style={{ perspective: 1000 }}
         >
           {/* Glow behind mockup */}
           <div className="absolute inset-0 bg-gradient-to-t from-emerald-500/30 via-emerald-500/10 to-transparent rounded-3xl blur-3xl transform scale-110" />
           
-          {/* Browser Frame */}
-          <div className="relative">
+          {/* Browser Frame with 3D Tilt */}
+          <motion.div
+            ref={browserRef}
+            className="relative"
+            style={{
+              transformStyle: "preserve-3d",
+              rotateX: isHovering ? rotateX : 0,
+              rotateY: isHovering ? rotateY : 0,
+            }}
+            onMouseMove={handleMouseMove}
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={handleMouseLeave}
+          >
             {/* Screen */}
             <div className="relative bg-black rounded-t-xl lg:rounded-t-2xl overflow-hidden border border-zinc-800 shadow-2xl">
               {/* Toolbar */}
@@ -133,95 +178,173 @@ export function Hero() {
                 </div>
               </div>
               
-              {/* Cover Flow Carousel */}
+              {/* Z-Axis Depth Stack */}
               <div className="relative h-[420px] bg-black flex items-center justify-center overflow-hidden">
-                {screens.map((screen, index) => (
-                  <ScreenCard
-                    key={screen.src}
-                    screen={screen}
-                    index={index}
-                    activeIndex={activeIndex}
-                    scrollProgress={scrollYProgress}
-                  />
-                ))}
+                {/* Centered stack container */}
+                <div className="relative w-[220px] sm:w-[260px] h-[400px]" style={{ perspective: 1000 }}>
+                  {screens.map((screen, index) => (
+                    <DepthStackCard
+                      key={screen.src}
+                      screen={screen}
+                      index={index}
+                      totalScreens={screens.length}
+                      scrollProgress={scrollYProgress}
+                      isHovering={isHovering}
+                      glareX={glareX}
+                      glareY={glareY}
+                    />
+                  ))}
+                </div>
               </div>
+              
+              {/* Glare Overlay */}
+              {isHovering && (
+                <motion.div
+                  className="absolute inset-0 pointer-events-none z-20"
+                  style={{
+                    background: useTransform(
+                      [glareX, glareY],
+                      ([x, y]) => `radial-gradient(circle at ${x}% ${y}%, rgba(255,255,255,0.15) 0%, transparent 50%)`
+                    ),
+                    mixBlendMode: "overlay",
+                  }}
+                />
+              )}
             </div>
             
             {/* Laptop Base */}
             <div className="relative h-4 lg:h-6 bg-zinc-800 rounded-b-lg">
               <div className="absolute left-1/2 -translate-x-1/2 top-0 w-1/4 h-1 bg-zinc-700 rounded-b-lg" />
             </div>
-          </div>
+          </motion.div>
         </motion.div>
       </section>
     </div>
   )
 }
 
-function ScreenCard({
+function DepthStackCard({
   screen,
   index,
-  activeIndex,
+  totalScreens,
   scrollProgress,
+  isHovering,
+  glareX,
+  glareY,
 }: {
   screen: { src: string; alt: string }
   index: number
-  activeIndex: ReturnType<typeof useTransform<number>>
+  totalScreens: number
   scrollProgress: ReturnType<typeof useScroll>["scrollYProgress"]
+  isHovering: boolean
+  glareX: ReturnType<typeof useSpring>
+  glareY: ReturnType<typeof useSpring>
 }) {
-  // Calculate the position offset based on scroll
-  // Each screen slides from right -> center -> left as user scrolls
-  const xOffset = useTransform(scrollProgress, [0, 0.5, 1], [
-    index * 100,           // Start position
-    (index - 1) * 100,     // Middle position  
-    (index - 2) * 100,     // End position
-  ])
-
-  // Scale: center screen is 1, others are 0.85
+  // Scroll-driven transforms for Z-axis depth effect
+  // Each screen has its own scroll range where it's "active"
+  const screenDuration = 1 / totalScreens
+  const screenStart = index * screenDuration
+  const screenEnd = (index + 1) * screenDuration
+  
+  // Scale: starts at initial position, grows to 1 when active, then grows past camera (1.5) and fades
   const scale = useTransform(scrollProgress, (progress) => {
-    const currentActive = progress < 0.33 ? 0 : progress < 0.66 ? 1 : 2
-    return currentActive === index ? 1 : 0.85
+    if (progress < screenStart) {
+      // Before this screen's turn - tucked behind based on position
+      const depth = index - Math.floor(progress * totalScreens)
+      return Math.max(0.7, 1 - depth * 0.15)
+    } else if (progress < screenEnd) {
+      // This screen is active - scale from current to flying past
+      const localProgress = (progress - screenStart) / screenDuration
+      if (localProgress < 0.7) {
+        // Coming into focus
+        return 1
+      } else {
+        // Flying past the camera
+        return 1 + (localProgress - 0.7) * 1.67 // scales to ~1.5
+      }
+    } else {
+      // Already passed - fully scaled and gone
+      return 1.5
+    }
   })
-
-  // Opacity: center screen is 1, others are 0.4
+  
+  // Opacity: full when active center, faded when behind, invisible when flown past
   const opacity = useTransform(scrollProgress, (progress) => {
-    const currentActive = progress < 0.33 ? 0 : progress < 0.66 ? 1 : 2
-    return currentActive === index ? 1 : 0.4
+    if (progress < screenStart) {
+      // Behind - calculate depth opacity
+      const depth = index - Math.floor(progress * totalScreens)
+      if (depth === 0) return 1
+      if (depth === 1) return 0.4
+      return 0.15
+    } else if (progress < screenEnd) {
+      // Active - fade out as it flies past
+      const localProgress = (progress - screenStart) / screenDuration
+      if (localProgress < 0.7) return 1
+      return 1 - ((localProgress - 0.7) / 0.3) // fades from 1 to 0
+    } else {
+      return 0
+    }
   })
-
-  // Blur: center screen is 0, others are 4px
-  const blur = useTransform(scrollProgress, (progress) => {
-    const currentActive = progress < 0.33 ? 0 : progress < 0.66 ? 1 : 2
-    return currentActive === index ? 0 : 4
+  
+  // Y position: stacked below when behind, moves up into view, then stays
+  const y = useTransform(scrollProgress, (progress) => {
+    if (progress < screenStart) {
+      // Behind - calculate depth offset
+      const depth = index - Math.floor(progress * totalScreens)
+      return depth * 40
+    } else if (progress < screenEnd) {
+      // Active - float up then stay at 0
+      const localProgress = (progress - screenStart) / screenDuration
+      if (localProgress < 0.3) {
+        return (1 - localProgress / 0.3) * 40
+      }
+      return 0
+    } else {
+      return 0
+    }
   })
-
-  // Z-index for proper layering
+  
+  // Z-index for proper stacking
   const zIndex = useTransform(scrollProgress, (progress) => {
-    const currentActive = progress < 0.33 ? 0 : progress < 0.66 ? 1 : 2
-    return currentActive === index ? 10 : 1
+    const currentActive = Math.min(Math.floor(progress * totalScreens), totalScreens - 1)
+    if (index === currentActive) return 10
+    if (index > currentActive) return totalScreens - index
+    return 0 // Already passed
   })
-
-  // Glow shadow for active screen
+  
+  // Neon glow for active screen
   const boxShadow = useTransform(scrollProgress, (progress) => {
-    const currentActive = progress < 0.33 ? 0 : progress < 0.66 ? 1 : 2
-    return currentActive === index 
-      ? "0 0 60px rgba(16, 185, 129, 0.3), 0 0 120px rgba(16, 185, 129, 0.15)" 
-      : "0 0 0px rgba(0, 0, 0, 0)"
+    const currentActive = Math.min(Math.floor(progress * totalScreens), totalScreens - 1)
+    if (index === currentActive) {
+      return "0 20px 50px rgba(16, 185, 129, 0.25), 0 0 80px rgba(16, 185, 129, 0.15)"
+    }
+    return "0 10px 30px rgba(0, 0, 0, 0.3)"
+  })
+  
+  // Blur for depth perception
+  const blur = useTransform(scrollProgress, (progress) => {
+    if (progress < screenStart) {
+      const depth = index - Math.floor(progress * totalScreens)
+      return depth > 0 ? depth * 2 : 0
+    }
+    return 0
   })
 
   return (
     <motion.div
-      className="absolute"
+      className="absolute inset-0 flex items-center justify-center"
       style={{
-        x: useTransform(xOffset, (v) => `${v}%`),
         scale,
         opacity,
+        y,
         zIndex,
         filter: useTransform(blur, (v) => `blur(${v}px)`),
-        boxShadow,
       }}
     >
-      <div className="w-[220px] sm:w-[260px] rounded-2xl overflow-hidden border border-white/10 bg-black">
+      <motion.div
+        className="w-full rounded-2xl overflow-hidden border border-white/10 bg-black relative"
+        style={{ boxShadow }}
+      >
         <Image
           src={screen.src}
           alt={screen.alt}
@@ -230,7 +353,21 @@ function ScreenCard({
           className="w-full h-auto"
           priority
         />
-      </div>
+        
+        {/* Individual card glare when hovered and active */}
+        {isHovering && (
+          <motion.div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background: useTransform(
+                [glareX, glareY],
+                ([x, y]) => `radial-gradient(circle at ${x}% ${y}%, rgba(255,255,255,0.1) 0%, transparent 60%)`
+              ),
+              mixBlendMode: "overlay",
+            }}
+          />
+        )}
+      </motion.div>
     </motion.div>
   )
 }
