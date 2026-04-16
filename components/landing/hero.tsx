@@ -24,9 +24,15 @@ export function Hero() {
   const rotateX = useSpring(useTransform(mouseY, [-0.5, 0.5], [8, -8]), { stiffness: 300, damping: 30 })
   const rotateY = useSpring(useTransform(mouseX, [-0.5, 0.5], [-8, 8]), { stiffness: 300, damping: 30 })
   
-  // Glare position
+  // Glare position - always call these hooks unconditionally
   const glareX = useSpring(useTransform(mouseX, [-0.5, 0.5], [0, 100]), { stiffness: 300, damping: 30 })
   const glareY = useSpring(useTransform(mouseY, [-0.5, 0.5], [0, 100]), { stiffness: 300, damping: 30 })
+  
+  // Pre-compute the glare background transform unconditionally
+  const glareBackground = useTransform(
+    [glareX, glareY],
+    ([x, y]) => `radial-gradient(circle at ${x}% ${y}%, rgba(255,255,255,0.15) 0%, transparent 50%)`
+  )
   
   const [isHovering, setIsHovering] = useState(false)
   
@@ -189,27 +195,20 @@ export function Hero() {
                       index={index}
                       totalScreens={screens.length}
                       scrollProgress={scrollYProgress}
-                      isHovering={isHovering}
-                      glareX={glareX}
-                      glareY={glareY}
                     />
                   ))}
                 </div>
               </div>
               
-              {/* Glare Overlay */}
-              {isHovering && (
-                <motion.div
-                  className="absolute inset-0 pointer-events-none z-20"
-                  style={{
-                    background: useTransform(
-                      [glareX, glareY],
-                      ([x, y]) => `radial-gradient(circle at ${x}% ${y}%, rgba(255,255,255,0.15) 0%, transparent 50%)`
-                    ),
-                    mixBlendMode: "overlay",
-                  }}
-                />
-              )}
+              {/* Glare Overlay - always render but control visibility with opacity */}
+              <motion.div
+                className="absolute inset-0 pointer-events-none z-20"
+                style={{
+                  background: glareBackground,
+                  mixBlendMode: "overlay",
+                  opacity: isHovering ? 1 : 0,
+                }}
+              />
             </div>
             
             {/* Laptop Base */}
@@ -228,17 +227,11 @@ function DepthStackCard({
   index,
   totalScreens,
   scrollProgress,
-  isHovering,
-  glareX,
-  glareY,
 }: {
   screen: { src: string; alt: string }
   index: number
   totalScreens: number
   scrollProgress: ReturnType<typeof useScroll>["scrollYProgress"]
-  isHovering: boolean
-  glareX: ReturnType<typeof useSpring>
-  glareY: ReturnType<typeof useSpring>
 }) {
   // Scroll-driven transforms for Z-axis depth effect
   // Each screen has its own scroll range where it's "active"
@@ -329,6 +322,8 @@ function DepthStackCard({
     }
     return 0
   })
+  
+  const filterBlur = useTransform(blur, (v) => `blur(${v}px)`)
 
   return (
     <motion.div
@@ -338,7 +333,7 @@ function DepthStackCard({
         opacity,
         y,
         zIndex,
-        filter: useTransform(blur, (v) => `blur(${v}px)`),
+        filter: filterBlur,
       }}
     >
       <motion.div
@@ -353,20 +348,6 @@ function DepthStackCard({
           className="w-full h-auto"
           priority
         />
-        
-        {/* Individual card glare when hovered and active */}
-        {isHovering && (
-          <motion.div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background: useTransform(
-                [glareX, glareY],
-                ([x, y]) => `radial-gradient(circle at ${x}% ${y}%, rgba(255,255,255,0.1) 0%, transparent 60%)`
-              ),
-              mixBlendMode: "overlay",
-            }}
-          />
-        )}
       </motion.div>
     </motion.div>
   )
