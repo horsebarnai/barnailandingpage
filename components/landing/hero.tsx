@@ -59,7 +59,7 @@ export function Hero() {
           transition={{ duration: 0.7, delay: 0.4 }}
           className="text-lg sm:text-xl text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          Institutional-grade pedigree analytics, syndicate asset management, and proprietary deal brokerage—all in one terminal.
+          Institutional-grade pedigree analytics, syndicate asset management, and AI-powered breeding intelligence—all in one terminal.
         </motion.p>
 
         {/* CTA Buttons */}
