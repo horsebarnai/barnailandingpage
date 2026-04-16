@@ -10,12 +10,12 @@ const features = [
     id: "ai-matcher",
     name: "AI Matcher",
     icon: Sparkles,
-    headline: "Billion-Variable Match Engine.",
-    description: "Instantly score crosses with our proprietary genetic algorithm. Get real-time compatibility analysis, trait predictions, and confidence scores for every potential pairing.",
+    headline: "Multi-Factor Match Engine.",
+    description: "Score potential crosses using our proprietary matching engine. Get compatibility analysis, trait predictions, and confidence scores for every pairing — grounded in decades of pedigree and performance data.",
     image: "/screenshots/ai-match.png",
     stats: [
-      { label: "Variables Analyzed", value: "2.1B+" },
-      { label: "Match Accuracy", value: "94%" },
+      { label: "Genetic + performance + conformation modeling", value: "Multi-Factor" },
+      { label: "Every match ranked with transparency", value: "Confidence Scored" },
     ]
   },
   {

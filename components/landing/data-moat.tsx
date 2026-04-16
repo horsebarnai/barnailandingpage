@@ -7,20 +7,20 @@ const moatCards = [
   {
     icon: Database,
     title: "Proprietary Data",
-    description: "20+ years of curated pedigree records, sale results, and performance metrics unavailable anywhere else. Our data is our moat.",
-    highlight: "8M+ horses indexed"
+    description: "Two decades of pedigree records, sale results, and performance metrics aggregated into a single institutional-grade dataset. Our data infrastructure is our moat.",
+    highlight: "Two decades of pedigree data"
   },
   {
     icon: Network,
     title: "Direct Breeder Distribution",
-    description: "Exclusive partnerships with top breeding operations worldwide. Direct access to inventory, pricing, and availability before public listing.",
-    highlight: "400+ partner farms"
+    description: "Building direct relationships with leading breeding operations to surface inventory, pricing, and availability ahead of public listing.",
+    highlight: "Partner network in development"
   },
   {
     icon: Shield,
     title: "Embedded Financial Services",
-    description: "Integrated insurance, syndication structuring, and financing solutions. Close deals faster with everything in one platform.",
-    highlight: "$2.1B AUM"
+    description: "Future-ready tooling for syndication structuring and deal workflows — designed to integrate with the financial and insurance partners you already use.",
+    highlight: "Launching 2026"
   },
 ]
 

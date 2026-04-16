@@ -26,7 +26,7 @@ export function CTASection() {
           </span>
         </h2>
         <p className="text-lg sm:text-xl text-zinc-400 max-w-2xl mx-auto mb-10">
-          Join the top breeding operations, syndicates, and bloodstock agents already using Barn AI.
+          Be among the first breeding operations, syndicates, and bloodstock agents to run on Barn AI.
         </p>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -46,17 +46,7 @@ export function CTASection() {
           </Button>
         </div>
 
-        {/* Trust Badges */}
-        <div className="mt-16 flex flex-col items-center">
-          <p className="text-sm text-zinc-500 mb-6">Trusted by industry leaders</p>
-          <div className="flex flex-wrap justify-center gap-8 opacity-50">
-            <div className="text-zinc-400 font-semibold">Coolmore</div>
-            <div className="text-zinc-400 font-semibold">Godolphin</div>
-            <div className="text-zinc-400 font-semibold">Juddmonte</div>
-            <div className="text-zinc-400 font-semibold">WinStar</div>
-            <div className="text-zinc-400 font-semibold">Spendthrift</div>
-          </div>
-        </div>
+
       </motion.div>
     </section>
   )

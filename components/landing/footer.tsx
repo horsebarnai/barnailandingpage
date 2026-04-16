@@ -1,7 +1,6 @@
 "use client"
 
 import Link from "next/link"
-import { motion } from "framer-motion"
 
 const footerLinks = {
   product: [
@@ -13,14 +12,14 @@ const footerLinks = {
   ],
   company: [
     { name: "About", href: "#" },
-    { name: "Careers", href: "#" },
-    { name: "Blog", href: "#" },
-    { name: "Press", href: "#" },
+    { name: "Careers", href: "#", comingSoon: true },
+    { name: "Blog", href: "#", comingSoon: true },
+    { name: "Press", href: "#", comingSoon: true },
   ],
   resources: [
-    { name: "Documentation", href: "#" },
-    { name: "API Reference", href: "#" },
-    { name: "Status", href: "#" },
+    { name: "Documentation", href: "#", comingSoon: true },
+    { name: "API Reference", href: "#", comingSoon: true },
+    { name: "Status", href: "#", comingSoon: true },
     { name: "Support", href: "#" },
   ],
   legal: [
@@ -71,9 +70,18 @@ export function Footer() {
             <ul className="space-y-3">
               {footerLinks.company.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-sm text-zinc-500 hover:text-white transition-colors">
-                    {link.name}
-                  </Link>
+                  {link.comingSoon ? (
+                    <span className="text-sm text-zinc-600 cursor-not-allowed group relative">
+                      {link.name}
+                      <span className="absolute left-0 -top-8 bg-zinc-800 text-zinc-400 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                        Coming soon
+                      </span>
+                    </span>
+                  ) : (
+                    <Link href={link.href} className="text-sm text-zinc-500 hover:text-white transition-colors">
+                      {link.name}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
@@ -85,9 +93,18 @@ export function Footer() {
             <ul className="space-y-3">
               {footerLinks.resources.map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href} className="text-sm text-zinc-500 hover:text-white transition-colors">
-                    {link.name}
-                  </Link>
+                  {link.comingSoon ? (
+                    <span className="text-sm text-zinc-600 cursor-not-allowed group relative">
+                      {link.name}
+                      <span className="absolute left-0 -top-8 bg-zinc-800 text-zinc-400 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                        Coming soon
+                      </span>
+                    </span>
+                  ) : (
+                    <Link href={link.href} className="text-sm text-zinc-500 hover:text-white transition-colors">
+                      {link.name}
+                    </Link>
+                  )}
                 </li>
               ))}
             </ul>
