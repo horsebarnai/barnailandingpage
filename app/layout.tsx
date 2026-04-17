@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter, Geist_Mono } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
+import { MagneticCursor } from '@/components/magnetic-cursor'
 import './globals.css'
 
 const inter = Inter({ 
@@ -43,7 +44,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${geistMono.variable} bg-black`}>
-      <body className="font-sans antialiased bg-black text-white">
+      <body className="font-sans antialiased bg-black text-white cursor-none">
+        <MagneticCursor />
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
