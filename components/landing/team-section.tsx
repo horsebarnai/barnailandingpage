@@ -4,36 +4,39 @@ import { motion } from "framer-motion"
 import { Linkedin, Twitter } from "lucide-react"
 import Link from "next/link"
 
-// Placeholder founders - replace with actual info
 const founders = [
   {
-    name: "Founder 1",
-    role: "Co-Founder & CEO",
-    bio: "Brief one-liner bio goes here",
-    image: null, // Add image URL when available
-    linkedin: "#",
-    twitter: "#",
-  },
-  {
-    name: "Founder 2",
-    role: "Co-Founder & CTO",
-    bio: "Brief one-liner bio goes here",
-    image: null,
-    linkedin: "#",
-    twitter: "#",
-  },
-  {
-    name: "Founder 3",
+    name: "Om Kanmadikar",
+    initials: "OK",
     role: "Co-Founder & COO",
-    bio: "Brief one-liner bio goes here",
+    bio: "Serial entrepreneur, technical builder, and attorney. Drives product, engineering, legal, and financial strategy across Barn AI. JD, University of Kentucky College of Law. BA Public Health, University of Louisville. Kentucky Junior Chess Champion (2014).",
     image: null,
     linkedin: "#",
     twitter: "#",
   },
   {
-    name: "Founder 4",
-    role: "Co-Founder & CPO",
-    bio: "Brief one-liner bio goes here",
+    name: "Bill Murphy",
+    initials: "BM",
+    role: "Co-Founder & Industry SME",
+    bio: "Raised in Central Kentucky's thoroughbred industry. Deep multi-generational relationships across Lexington's breeding farms, stallion stations, bloodstock agencies, and auction houses. BA Finance, Transylvania University; Men's Basketball.",
+    image: null,
+    linkedin: "#",
+    twitter: "#",
+  },
+  {
+    name: "Mukund Venkatakrishnan",
+    initials: "MV",
+    role: "Chief Executive Officer",
+    bio: "2x founder — sold first med-tech company within Schmidt Futures. Won the HBS pitch contest with the idea for Upfront. While at Harvard, launched a real estate brokerage. Background across Box Group, crypto, and real-world assets.",
+    image: null,
+    linkedin: "#",
+    twitter: "#",
+  },
+  {
+    name: "Dale Browning",
+    initials: "DB",
+    role: "Chief Financial Officer",
+    bio: "Co-Founder & CFO of Ridgerunner. Previously Chief Operations and Data Officer at Thrive365. University of Louisville. Based in Louisville, Kentucky.",
     image: null,
     linkedin: "#",
     twitter: "#",
@@ -86,7 +89,7 @@ export function TeamSection() {
                   ) : (
                     <div className="w-full h-full rounded-full bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border-2 border-emerald-500/30 flex items-center justify-center">
                       <span className="text-2xl font-bold text-emerald-400">
-                        {founder.name.split(" ").map(n => n[0]).join("")}
+                        {founder.initials}
                       </span>
                     </div>
                   )}
