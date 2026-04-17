@@ -25,23 +25,27 @@ const markers = [
   { location: [53.3498, -6.2603], size: 0.05 }, // Dublin
 ]
 
-// Elegant running horse silhouette SVG path
+// Sleek thoroughbred racehorse silhouette - minimal elegant stroke
 function HorseSilhouette({ className }: { className?: string }) {
   return (
     <svg
-      viewBox="0 0 800 500"
+      viewBox="0 0 200 100"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
+      preserveAspectRatio="xMidYMid meet"
     >
+      {/* Sleek running thoroughbred - extended gallop pose */}
       <path
-        d="M735 195c-15-25-35-45-60-55-20-8-45-5-65 5-15-30-40-55-70-70-25-12-55-15-82-8-10-20-25-38-45-50-25-15-55-18-82-10-20 5-38 15-52 30-15-10-32-15-50-15-25 0-48 10-65 28-10-5-22-8-35-8-35 0-65 25-72 58-30 10-52 38-55 70-2 20 3 40 15 58-20 15-35 38-40 62-8 35 5 72 32 95l-35 75c-5 10-2 22 8 28 10 5 22 2 28-8l45-95h50l-25 90c-3 10 3 22 13 25 10 3 22-3 25-13l35-120c20 5 42 2 60-8l30 95c3 10 15 18 25 15 12-3 18-15 15-25l-40-125c15-18 25-40 28-62 25-5 48-18 65-38 12 10 28 15 45 15 30 0 58-18 70-45 20-5 38-15 52-30 18-20 28-45 25-72zm-520 40c-15 0-28-12-28-28s12-28 28-28 28 12 28 28-12 28-28 28z"
+        d="M12 75 L25 72 Q30 65 38 58 L42 62 L40 75 L44 76 L48 65 Q52 60 58 55 L65 58 L62 75 L66 76 L72 60 Q80 52 95 48 Q105 46 115 48 Q125 52 130 58 L128 75 L132 76 L138 60 Q142 55 148 52 L155 55 L150 75 L154 76 L162 58 Q168 52 175 50 Q180 48 185 50 L188 45 Q185 38 178 35 Q170 32 160 35 Q150 32 145 28 L148 22 Q152 18 155 12 Q153 10 148 12 L140 22 Q135 26 128 28 Q115 25 100 26 Q85 28 75 35 Q65 42 58 50 Q50 48 42 52 Q35 56 30 62 Q25 58 18 60 Q12 62 10 68 Q10 72 12 75 Z M152 16 Q155 14 156 12"
         stroke="currentColor"
-        strokeWidth="2"
+        strokeWidth="1"
         fill="none"
         strokeLinecap="round"
         strokeLinejoin="round"
       />
+      {/* Eye */}
+      <circle cx="150" cy="18" r="1.5" fill="currentColor" opacity="0.6" />
     </svg>
   )
 }
@@ -61,7 +65,7 @@ export function Hero() {
 
   // Horse runs off to the right as you scroll
   const horseX = useTransform(scrollYProgress, [0, 1], ["0%", "120%"])
-  const horseOpacity = useTransform(scrollYProgress, [0, 0.3, 0.8], [0.06, 0.1, 0])
+  const horseOpacity = useTransform(scrollYProgress, [0, 0.3, 0.8], [0.08, 0.15, 0])
   const horseScale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.1, 1.2])
   const horseRotate = useTransform(scrollYProgress, [0, 1], [0, -5])
 
@@ -112,9 +116,9 @@ export function Hero() {
 
   return (
     <section ref={sectionRef} className="relative min-h-screen flex items-center pt-20 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* Animated Horse Silhouette Background */}
+      {/* Animated Horse Silhouette Background - subtle and elegant */}
       <motion.div
-        className="absolute inset-0 flex items-center justify-center pointer-events-none"
+        className="absolute bottom-20 left-1/2 -translate-x-1/2 pointer-events-none"
         style={{
           x: horseX,
           opacity: horseOpacity,
@@ -122,19 +126,7 @@ export function Hero() {
           rotate: horseRotate,
         }}
       >
-        <HorseSilhouette className="w-[140%] max-w-[2000px] h-auto text-emerald-500" />
-      </motion.div>
-
-      {/* Secondary horse silhouette - smaller, offset, different timing */}
-      <motion.div
-        className="absolute inset-0 flex items-end justify-start pointer-events-none pb-20"
-        style={{
-          x: useTransform(scrollYProgress, [0, 1], ["0%", "150%"]),
-          opacity: useTransform(scrollYProgress, [0, 0.2, 0.6], [0.03, 0.06, 0]),
-          scale: useTransform(scrollYProgress, [0, 1], [0.6, 0.8]),
-        }}
-      >
-        <HorseSilhouette className="w-[60%] max-w-[800px] h-auto text-emerald-400" />
+        <HorseSilhouette className="w-[500px] h-auto text-emerald-500/80" />
       </motion.div>
 
       {/* Background Glow Effects */}
