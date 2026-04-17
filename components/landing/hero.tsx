@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import { motion } from "framer-motion"
+import { motion, useScroll, useTransform } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Play } from "lucide-react"
 import createGlobe from "cobe"
@@ -25,11 +25,45 @@ const markers = [
   { location: [53.3498, -6.2603], size: 0.05 }, // Dublin
 ]
 
+// Elegant running horse silhouette SVG path
+function HorseSilhouette({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 800 500"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+    >
+      <path
+        d="M735 195c-15-25-35-45-60-55-20-8-45-5-65 5-15-30-40-55-70-70-25-12-55-15-82-8-10-20-25-38-45-50-25-15-55-18-82-10-20 5-38 15-52 30-15-10-32-15-50-15-25 0-48 10-65 28-10-5-22-8-35-8-35 0-65 25-72 58-30 10-52 38-55 70-2 20 3 40 15 58-20 15-35 38-40 62-8 35 5 72 32 95l-35 75c-5 10-2 22 8 28 10 5 22 2 28-8l45-95h50l-25 90c-3 10 3 22 13 25 10 3 22-3 25-13l35-120c20 5 42 2 60-8l30 95c3 10 15 18 25 15 12-3 18-15 15-25l-40-125c15-18 25-40 28-62 25-5 48-18 65-38 12 10 28 15 45 15 30 0 58-18 70-45 20-5 38-15 52-30 18-20 28-45 25-72zm-520 40c-15 0-28-12-28-28s12-28 28-28 28 12 28 28-12 28-28 28z"
+        stroke="currentColor"
+        strokeWidth="2"
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  )
+}
+
 export function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const sectionRef = useRef<HTMLElement>(null)
   const pointerInteracting = useRef<number | null>(null)
   const pointerInteractionMovement = useRef(0)
   const phiRef = useRef(0)
+
+  // Scroll-based transforms for the horse
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"]
+  })
+
+  // Horse runs off to the right as you scroll
+  const horseX = useTransform(scrollYProgress, [0, 1], ["0%", "120%"])
+  const horseOpacity = useTransform(scrollYProgress, [0, 0.3, 0.8], [0.06, 0.1, 0])
+  const horseScale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.1, 1.2])
+  const horseRotate = useTransform(scrollYProgress, [0, 1], [0, -5])
 
   useEffect(() => {
     let phi = 0
@@ -77,7 +111,32 @@ export function Hero() {
   }, [])
 
   return (
-    <section className="relative min-h-screen flex items-center pt-20 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    <section ref={sectionRef} className="relative min-h-screen flex items-center pt-20 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      {/* Animated Horse Silhouette Background */}
+      <motion.div
+        className="absolute inset-0 flex items-center justify-center pointer-events-none"
+        style={{
+          x: horseX,
+          opacity: horseOpacity,
+          scale: horseScale,
+          rotate: horseRotate,
+        }}
+      >
+        <HorseSilhouette className="w-[140%] max-w-[2000px] h-auto text-emerald-500" />
+      </motion.div>
+
+      {/* Secondary horse silhouette - smaller, offset, different timing */}
+      <motion.div
+        className="absolute inset-0 flex items-end justify-start pointer-events-none pb-20"
+        style={{
+          x: useTransform(scrollYProgress, [0, 1], ["0%", "150%"]),
+          opacity: useTransform(scrollYProgress, [0, 0.2, 0.6], [0.03, 0.06, 0]),
+          scale: useTransform(scrollYProgress, [0, 1], [0.6, 0.8]),
+        }}
+      >
+        <HorseSilhouette className="w-[60%] max-w-[800px] h-auto text-emerald-400" />
+      </motion.div>
+
       {/* Background Glow Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-emerald-500/15 rounded-full blur-[120px]" />
