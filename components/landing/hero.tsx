@@ -25,27 +25,116 @@ const markers = [
   { location: [53.3498, -6.2603], size: 0.05 }, // Dublin
 ]
 
-// Sleek thoroughbred racehorse silhouette - minimal elegant stroke
+// Brush-stroke style leaping horse silhouette - artistic and fluid
 function HorseSilhouette({ className }: { className?: string }) {
   return (
     <svg
-      viewBox="0 0 200 100"
+      viewBox="0 0 400 200"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
       preserveAspectRatio="xMidYMid meet"
     >
-      {/* Sleek running thoroughbred - extended gallop pose */}
+      {/* Flowing mane and head */}
       <path
-        d="M12 75 L25 72 Q30 65 38 58 L42 62 L40 75 L44 76 L48 65 Q52 60 58 55 L65 58 L62 75 L66 76 L72 60 Q80 52 95 48 Q105 46 115 48 Q125 52 130 58 L128 75 L132 76 L138 60 Q142 55 148 52 L155 55 L150 75 L154 76 L162 58 Q168 52 175 50 Q180 48 185 50 L188 45 Q185 38 178 35 Q170 32 160 35 Q150 32 145 28 L148 22 Q152 18 155 12 Q153 10 148 12 L140 22 Q135 26 128 28 Q115 25 100 26 Q85 28 75 35 Q65 42 58 50 Q50 48 42 52 Q35 56 30 62 Q25 58 18 60 Q12 62 10 68 Q10 72 12 75 Z M152 16 Q155 14 156 12"
+        d="M320 45 Q340 35 355 40 Q365 45 370 55 Q368 65 360 70 Q350 72 345 68"
         stroke="currentColor"
-        strokeWidth="1"
+        strokeWidth="2.5"
         fill="none"
         strokeLinecap="round"
-        strokeLinejoin="round"
       />
-      {/* Eye */}
-      <circle cx="150" cy="18" r="1.5" fill="currentColor" opacity="0.6" />
+      {/* Head to neck curve */}
+      <path
+        d="M345 68 Q330 75 310 85 Q290 95 270 100"
+        stroke="currentColor"
+        strokeWidth="3"
+        fill="none"
+        strokeLinecap="round"
+      />
+      {/* Flowing mane strokes */}
+      <path
+        d="M355 50 Q340 45 320 55 Q295 70 280 85"
+        stroke="currentColor"
+        strokeWidth="2"
+        fill="none"
+        strokeLinecap="round"
+      />
+      <path
+        d="M350 55 Q330 55 305 70 Q285 85 270 95"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        fill="none"
+        strokeLinecap="round"
+      />
+      {/* Back line */}
+      <path
+        d="M270 100 Q230 105 190 115 Q150 125 120 130"
+        stroke="currentColor"
+        strokeWidth="3.5"
+        fill="none"
+        strokeLinecap="round"
+      />
+      {/* Hindquarters */}
+      <path
+        d="M120 130 Q100 135 85 145 Q75 155 80 165"
+        stroke="currentColor"
+        strokeWidth="3"
+        fill="none"
+        strokeLinecap="round"
+      />
+      {/* Back legs - extended push-off */}
+      <path
+        d="M80 165 Q60 175 35 185 Q20 190 10 195"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        fill="none"
+        strokeLinecap="round"
+      />
+      <path
+        d="M95 155 Q75 165 55 180 Q40 188 30 192"
+        stroke="currentColor"
+        strokeWidth="2"
+        fill="none"
+        strokeLinecap="round"
+      />
+      {/* Belly line */}
+      <path
+        d="M120 135 Q160 145 200 145 Q240 140 270 130"
+        stroke="currentColor"
+        strokeWidth="2"
+        fill="none"
+        strokeLinecap="round"
+      />
+      {/* Front legs - reaching forward */}
+      <path
+        d="M270 130 Q290 145 320 155 Q350 162 380 165"
+        stroke="currentColor"
+        strokeWidth="2.5"
+        fill="none"
+        strokeLinecap="round"
+      />
+      <path
+        d="M260 125 Q285 140 315 150 Q345 158 375 160"
+        stroke="currentColor"
+        strokeWidth="2"
+        fill="none"
+        strokeLinecap="round"
+      />
+      {/* Tail flowing */}
+      <path
+        d="M85 145 Q60 130 40 115 Q25 105 15 100"
+        stroke="currentColor"
+        strokeWidth="2"
+        fill="none"
+        strokeLinecap="round"
+      />
+      <path
+        d="M80 150 Q55 140 35 125 Q20 115 10 110"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        fill="none"
+        strokeLinecap="round"
+      />
     </svg>
   )
 }
@@ -126,7 +215,7 @@ export function Hero() {
           rotate: horseRotate,
         }}
       >
-        <HorseSilhouette className="w-[500px] h-auto text-emerald-500/80" />
+        <HorseSilhouette className="w-[400px] h-auto text-emerald-500" />
       </motion.div>
 
       {/* Background Glow Effects */}
