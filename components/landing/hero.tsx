@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { motion } from "framer-motion"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Play } from "lucide-react"
 import createGlobe from "cobe"
@@ -25,138 +25,11 @@ const markers = [
   { location: [53.3498, -6.2603], size: 0.05 }, // Dublin
 ]
 
-// Brush-stroke style leaping horse silhouette - artistic and fluid
-function HorseSilhouette({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 400 200"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-      preserveAspectRatio="xMidYMid meet"
-    >
-      {/* Flowing mane and head */}
-      <path
-        d="M320 45 Q340 35 355 40 Q365 45 370 55 Q368 65 360 70 Q350 72 345 68"
-        stroke="currentColor"
-        strokeWidth="2.5"
-        fill="none"
-        strokeLinecap="round"
-      />
-      {/* Head to neck curve */}
-      <path
-        d="M345 68 Q330 75 310 85 Q290 95 270 100"
-        stroke="currentColor"
-        strokeWidth="3"
-        fill="none"
-        strokeLinecap="round"
-      />
-      {/* Flowing mane strokes */}
-      <path
-        d="M355 50 Q340 45 320 55 Q295 70 280 85"
-        stroke="currentColor"
-        strokeWidth="2"
-        fill="none"
-        strokeLinecap="round"
-      />
-      <path
-        d="M350 55 Q330 55 305 70 Q285 85 270 95"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        fill="none"
-        strokeLinecap="round"
-      />
-      {/* Back line */}
-      <path
-        d="M270 100 Q230 105 190 115 Q150 125 120 130"
-        stroke="currentColor"
-        strokeWidth="3.5"
-        fill="none"
-        strokeLinecap="round"
-      />
-      {/* Hindquarters */}
-      <path
-        d="M120 130 Q100 135 85 145 Q75 155 80 165"
-        stroke="currentColor"
-        strokeWidth="3"
-        fill="none"
-        strokeLinecap="round"
-      />
-      {/* Back legs - extended push-off */}
-      <path
-        d="M80 165 Q60 175 35 185 Q20 190 10 195"
-        stroke="currentColor"
-        strokeWidth="2.5"
-        fill="none"
-        strokeLinecap="round"
-      />
-      <path
-        d="M95 155 Q75 165 55 180 Q40 188 30 192"
-        stroke="currentColor"
-        strokeWidth="2"
-        fill="none"
-        strokeLinecap="round"
-      />
-      {/* Belly line */}
-      <path
-        d="M120 135 Q160 145 200 145 Q240 140 270 130"
-        stroke="currentColor"
-        strokeWidth="2"
-        fill="none"
-        strokeLinecap="round"
-      />
-      {/* Front legs - reaching forward */}
-      <path
-        d="M270 130 Q290 145 320 155 Q350 162 380 165"
-        stroke="currentColor"
-        strokeWidth="2.5"
-        fill="none"
-        strokeLinecap="round"
-      />
-      <path
-        d="M260 125 Q285 140 315 150 Q345 158 375 160"
-        stroke="currentColor"
-        strokeWidth="2"
-        fill="none"
-        strokeLinecap="round"
-      />
-      {/* Tail flowing */}
-      <path
-        d="M85 145 Q60 130 40 115 Q25 105 15 100"
-        stroke="currentColor"
-        strokeWidth="2"
-        fill="none"
-        strokeLinecap="round"
-      />
-      <path
-        d="M80 150 Q55 140 35 125 Q20 115 10 110"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        fill="none"
-        strokeLinecap="round"
-      />
-    </svg>
-  )
-}
-
 export function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  const sectionRef = useRef<HTMLElement>(null)
   const pointerInteracting = useRef<number | null>(null)
   const pointerInteractionMovement = useRef(0)
   const phiRef = useRef(0)
-
-  // Scroll-based transforms for the horse
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"]
-  })
-
-  // Horse runs off to the right as you scroll
-  const horseX = useTransform(scrollYProgress, [0, 1], ["0%", "120%"])
-  const horseOpacity = useTransform(scrollYProgress, [0, 0.3, 0.8], [0.08, 0.15, 0])
-  const horseScale = useTransform(scrollYProgress, [0, 0.5, 1], [1, 1.1, 1.2])
-  const horseRotate = useTransform(scrollYProgress, [0, 1], [0, -5])
 
   useEffect(() => {
     let phi = 0
@@ -204,20 +77,7 @@ export function Hero() {
   }, [])
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen flex items-center pt-20 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
-      {/* Animated Horse Silhouette Background - subtle and elegant */}
-      <motion.div
-        className="absolute bottom-20 left-1/2 -translate-x-1/2 pointer-events-none"
-        style={{
-          x: horseX,
-          opacity: horseOpacity,
-          scale: horseScale,
-          rotate: horseRotate,
-        }}
-      >
-        <HorseSilhouette className="w-[400px] h-auto text-emerald-500" />
-      </motion.div>
-
+    <section className="relative min-h-screen flex items-center pt-20 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Background Glow Effects */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/3 right-1/4 w-[600px] h-[600px] bg-emerald-500/15 rounded-full blur-[120px]" />
