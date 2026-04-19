@@ -1,41 +1,31 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Linkedin, Twitter } from "lucide-react"
-import Link from "next/link"
 
 const founders = [
   {
     name: "Om Kanmadikar",
     initials: "OK",
-    role: "Co-Founder & CEO",
-    bio: "Serial entrepreneur, technical builder, and attorney. Drives product, engineering, legal, and financial strategy across Barn AI. JD, University of Kentucky College of Law. BA Public Health, University of Louisville.",
-    linkedin: "#",
-    twitter: "#",
+    role: "FOUNDER & CHIEF EXECUTIVE OFFICER",
+    bio: "Serial entrepreneur, technical builder, and attorney. Leads product vision, engineering, and legal strategy. Former Kentucky State Junior Champion (2014). JD, University of Kentucky.",
   },
   {
     name: "Bill Murphy",
     initials: "BM",
-    role: "Co-Founder & Industry SME",
-    bio: "Raised in Central Kentucky's thoroughbred industry with deep multi-generational relationships across Lexington's breeding farms, stallion stations, bloodstock agencies, and auction houses. BA Finance from Transylvania University, where he was a member of the Men's Basketball team.",
-    linkedin: "#",
-    twitter: "#",
-  },
-  {
-    name: "Dale Browning",
-    initials: "DB",
-    role: "Co-Founder & CFO",
-    bio: "Former Deloitte consultant and Co-Founder & CFO of Ridgerunner. Previously Chief Operations and Data Officer at Thrive365. University of Louisville. Based in Louisville, Kentucky.",
-    linkedin: "#",
-    twitter: "#",
+    role: "CO-FOUNDER & CHIEF EQUINE OFFICER",
+    bio: "Lifelong horseman. Raised in Central Kentucky's thoroughbred industry — multi-generational relationships across Lexington's farms, stallion stations, and auction houses. Background across equine and global equine transport. BA Finance, Transylvania University.",
   },
   {
     name: "Mukund Venkatakrishnan",
     initials: "MV",
-    role: "Co-Founder & Chief Strategy Officer",
-    bio: "2x founder — sold first med-tech company within Schmidt Futures. Won the HBS pitch contest with the idea for Upfront. While at Harvard, launched a real estate brokerage. Background across Box Group, crypto, and real-world assets.",
-    linkedin: "#",
-    twitter: "#",
+    role: "CHIEF STRATEGY OFFICER",
+    bio: "2x founder — sold first med-tech company within Schmidt Futures. CEO of Upfront. Harvard College, Math & Philosophy. Background across Box Group, crypto, and real-world assets.",
+  },
+  {
+    name: "Dale Browning",
+    initials: "DB",
+    role: "CHIEF FINANCIAL OFFICER & INTERIM CHIEF OPERATIONS OFFICER",
+    bio: "20+ years across finance, strategy, and AI. Executive leadership from startups to Fortune 500. University of Louisville, Deloitte, Humana.",
   },
 ]
 
@@ -51,19 +41,13 @@ export function TeamSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-emerald-400 text-sm font-semibold tracking-wider uppercase mb-4 block">
-            Leadership
-          </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Founding Team
+            Leadership
           </h2>
-          <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
-            Our founding team combines deep expertise in equine breeding, institutional finance, and AI technology.
-          </p>
         </motion.div>
 
         {/* Founders Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {founders.map((founder, index) => (
             <motion.div
               key={founder.name}
@@ -71,65 +55,26 @@ export function TeamSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group"
             >
-              {/* Glassmorphism Card */}
-              <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-emerald-500/30 transition-all duration-300 hover:shadow-[0_0_30px_rgba(16,185,129,0.1)] h-full">
+              {/* Dark Card */}
+              <div className="bg-zinc-900/80 border border-zinc-800 rounded-xl p-6 h-full">
                 {/* Avatar */}
-                <div className="relative w-20 h-20 mx-auto mb-5">
-                  <div className="w-full h-full rounded-full bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border-2 border-emerald-500/30 flex items-center justify-center">
-                    <span className="text-xl font-bold text-emerald-400">
-                      {founder.initials}
-                    </span>
-                  </div>
-                  {/* Glow effect on hover */}
-                  <div className="absolute inset-0 rounded-full bg-emerald-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="w-14 h-14 rounded-full bg-emerald-600 flex items-center justify-center mb-6">
+                  <span className="text-lg font-bold text-white">
+                    {founder.initials}
+                  </span>
                 </div>
 
                 {/* Info */}
-                <div className="text-center">
-                  <h3 className="text-lg font-semibold text-white mb-1">{founder.name}</h3>
-                  <p className="text-sm text-emerald-400 font-medium mb-3">{founder.role}</p>
-                  <p className="text-sm text-zinc-500 leading-relaxed mb-4 line-clamp-4">{founder.bio}</p>
-
-                  {/* Social Links */}
-                  <div className="flex items-center justify-center gap-3">
-                    <Link
-                      href={founder.linkedin}
-                      className="p-2 rounded-lg bg-white/5 text-zinc-400 hover:text-white hover:bg-white/10 transition-colors"
-                    >
-                      <Linkedin className="w-4 h-4" />
-                    </Link>
-                    <Link
-                      href={founder.twitter}
-                      className="p-2 rounded-lg bg-white/5 text-zinc-400 hover:text-white hover:bg-white/10 transition-colors"
-                    >
-                      <Twitter className="w-4 h-4" />
-                    </Link>
-                  </div>
+                <div>
+                  <h3 className="text-xl font-bold text-white mb-2">{founder.name}</h3>
+                  <p className="text-xs text-emerald-500 font-semibold tracking-wider mb-4">{founder.role}</p>
+                  <p className="text-sm text-zinc-400 leading-relaxed">{founder.bio}</p>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
-
-        {/* Mission Statement */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-20 text-center"
-        >
-          <div className="max-w-3xl mx-auto p-8 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
-            <h3 className="text-xl font-semibold text-white mb-4">Our Mission</h3>
-            <p className="text-zinc-400 leading-relaxed">
-              We&apos;re building the institutional-grade infrastructure the equine industry deserves. 
-              By combining decades of industry expertise with cutting-edge AI, we&apos;re empowering breeders, 
-              syndicates, and bloodstock agents to make smarter decisions—faster.
-            </p>
-          </div>
-        </motion.div>
       </div>
     </section>
   )
