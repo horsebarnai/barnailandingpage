@@ -193,17 +193,9 @@ export function Header() {
 
           {/* Desktop Actions */}
           <div className="hidden lg:flex items-center gap-4">
-            <Link
-              href="#login"
-              className="text-sm font-medium text-zinc-400 hover:text-white transition-colors duration-200"
-            >
-              Log In
-            </Link>
-            <Button
-              className="bg-emerald-500 hover:bg-emerald-400 text-black font-semibold px-6 rounded-full shadow-[0_0_20px_rgba(74,222,128,0.4)] hover:shadow-[0_0_30px_rgba(74,222,128,0.6)] transition-all duration-300"
-            >
-              Launch App
-            </Button>
+            <span className="bg-zinc-800 text-zinc-400 font-medium px-6 py-2 rounded-full cursor-default">
+              App Coming Soon
+            </span>
           </div>
 
           {/* Mobile Menu Button */}
@@ -285,17 +277,9 @@ export function Header() {
               </div>
 
               <div className="pt-4 border-t border-zinc-800 flex flex-col gap-3">
-                <Link
-                  href="#login"
-                  className="text-center text-zinc-400 hover:text-white transition-colors"
-                >
-                  Log In
-                </Link>
-                <Button
-                  className="w-full bg-emerald-500 hover:bg-emerald-400 text-black font-semibold rounded-full shadow-[0_0_20px_rgba(74,222,128,0.4)]"
-                >
-                  Launch App
-                </Button>
+                <span className="w-full text-center bg-zinc-800 text-zinc-400 font-medium py-3 rounded-full cursor-default">
+                  App Coming Soon
+                </span>
               </div>
             </div>
           </motion.div>

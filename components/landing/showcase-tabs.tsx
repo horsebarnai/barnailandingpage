@@ -3,7 +3,7 @@
 import { useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import Image from "next/image"
-import { Sparkles, Share2, TrendingUp, Calendar } from "lucide-react"
+import { TrendingUp } from "lucide-react"
 
 const features = [
   {
@@ -13,22 +13,6 @@ const features = [
     headline: "Real-Time Asset Management.",
     description: "Track your barn value with live market data. Monitor equity positions, breeding fees, and projected returns across your entire portfolio in one unified dashboard.",
     image: "/screenshots/barn.png",
-  },
-  {
-    id: "ai-matcher",
-    name: "AI Matcher",
-    icon: Sparkles,
-    headline: "Multi-Factor Match Engine.",
-    description: "Score potential crosses using our proprietary matching engine. Get compatibility analysis, trait predictions, and confidence scores for every pairing — grounded in decades of pedigree and performance data.",
-    image: "/screenshots/ai-match.png",
-  },
-  {
-    id: "race-calendar",
-    name: "Race Calendar",
-    icon: Calendar,
-    headline: "Global Events Dashboard.",
-    description: "Never miss a race, sale, or breeding deadline. Our intelligent calendar aggregates global events with personalized alerts for your watchlist and barn.",
-    image: "/screenshots/home.png",
   },
 ]
 

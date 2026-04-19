@@ -9,7 +9,8 @@ const founders = [
     name: "Om Kanmadikar",
     initials: "OK",
     role: "Co-Founder & CEO",
-    bio: "Serial entrepreneur, technical builder, and attorney. Drives product, engineering, legal, and financial strategy across Barn AI. JD, University of Kentucky College of Law. BA Public Health, University of Louisville. Kentucky Junior Chess Champion (2014).",
+    bio: "Serial entrepreneur, technical builder, and
+ attorney. Drives product, engineering, legal, and financial strategy across Barn AI. JD, University of Kentucky College of Law. BA Public Health, University of Louisville.",
     image: null,
     linkedin: "#",
     twitter: "#",
@@ -18,25 +19,7 @@ const founders = [
     name: "Bill Murphy",
     initials: "BM",
     role: "Co-Founder & Industry SME",
-    bio: "Raised in Central Kentucky's thoroughbred industry with deep multi-generational relationships across Lexington's breeding farms, stallion stations, bloodstock agencies, and auction houses. BA Finance from Transylvania University, where he was a member of the Men's Basketball team.",
-    image: null,
-    linkedin: "#",
-    twitter: "#",
-  },
-  {
-    name: "Dale Browning",
-    initials: "DB",
-    role: "Co-Founder & CFO",
-    bio: "Former Deloitte consultant and Co-Founder & CFO of Ridgerunner. Previously Chief Operations and Data Officer at Thrive365. University of Louisville. Based in Louisville, Kentucky.",
-    image: null,
-    linkedin: "#",
-    twitter: "#",
-  },
-  {
-    name: "Mukund Venkatakrishnan",
-    initials: "MV",
-    role: "Co-Founder & Chief Strategy Officer",
-    bio: "2x founder — sold first med-tech company within Schmidt Futures. Won the HBS pitch contest with the idea for Upfront. While at Harvard, launched a real estate brokerage. Background across Box Group, crypto, and real-world assets.",
+    bio: "Raised in Central Kentucky's thoroughbred industry with deep multi-generational relationships across Lexington's breeding farms, stallion stations, bloodstock agencies, and auction houses. BA Finance from Transylvania University, where he was a member of weof the Men's Basketball team.",
     image: null,
     linkedin: "#",
     twitter: "#",
@@ -67,7 +50,7 @@ export function TeamSection() {
         </motion.div>
 
         {/* Founders Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+        <div className="grid sm:grid-cols-2 gap-6 lg:gap-8 max-w-2xl mx-auto">
           {founders.map((founder, index) => (
             <motion.div
               key={founder.name}

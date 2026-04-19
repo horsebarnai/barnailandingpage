@@ -6,14 +6,6 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, Play } from "lucide-react"
 import createGlobe from "cobe"
 
-const upcomingEvents = [
-  { name: "Keeneland September Sale", location: "Kentucky", date: "Sep 9-22", live: true },
-  { name: "Royal Ascot G1", location: "London", date: "Jun 18-22", live: false },
-  { name: "Fasig-Tipton Fall Mixed", location: "Kentucky", date: "Oct 7-8", live: false },
-  { name: "Japan Cup G1", location: "Tokyo", date: "Nov 24", live: false },
-  { name: "Dubai World Cup", location: "Dubai", date: "Mar 29", live: false },
-]
-
 // Major racing locations with lat/lng
 const markers = [
   { location: [38.0498, -84.4583], size: 0.08 }, // Kentucky (Lexington)
@@ -203,36 +195,7 @@ export function Hero() {
                 }}
               />
 
-              {/* Floating Calendar Card */}
-              <motion.div
-                initial={{ opacity: 0, x: 20, y: 20 }}
-                animate={{ opacity: 1, x: 0, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.9 }}
-                className="absolute -bottom-4 -right-4 sm:bottom-8 sm:right-0 lg:-right-8 w-72 backdrop-blur-md bg-white/5 border border-white/10 rounded-2xl p-4 shadow-2xl"
-              >
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-sm font-semibold text-white">Live Global Calendar</h3>
-                  <span className="flex items-center gap-1.5 text-xs text-emerald-400">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                    Live
-                  </span>
-                </div>
-                
-                <div className="space-y-3 max-h-48 overflow-y-auto scrollbar-thin scrollbar-thumb-zinc-700 scrollbar-track-transparent">
-                  {upcomingEvents.map((event, idx) => (
-                    <motion.div
-                      key={event.name}
-                      initial={{ opacity: 0, x: 10 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ duration: 0.4, delay: 1 + idx * 0.1 }}
-                      className="flex items-start gap-3 p-2 rounded-lg hover:bg-white/5 transition-colors"
-                    >
-                      <span className={`mt-1 w-2 h-2 rounded-full flex-shrink-0 ${event.live ? "bg-emerald-400 animate-pulse" : "bg-zinc-600"}`} />
-                      <div className="flex-1 min-w-0">
-                        <p className="text-sm text-white font-medium truncate">{event.name}</p>
-                        <p className="text-xs text-zinc-500">{event.location} · {event.date}</p>
-                      </div>
-                    </motion.div>
+
                   ))}
                 </div>
               </motion.div>
