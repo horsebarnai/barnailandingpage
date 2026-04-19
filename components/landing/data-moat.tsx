@@ -1,43 +1,25 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Database, Network, Shield } from "lucide-react"
+import { Brain, Lock, Zap } from "lucide-react"
 
-const moatCards = [
+const capabilities = [
   {
-    icon: Database,
-    title: "Proprietary Data",
-    description: "Two decades of pedigree records, sale results, and performance metrics aggregated into a single institutional-grade dataset. Our data infrastructure is our moat.",
-    highlight: "Two decades of pedigree data"
+    icon: Brain,
+    title: "Institutional-Grade Intelligence",
+    description: "Advanced decision support powered by proprietary models trained on decades of industry data.",
   },
   {
-    icon: Network,
-    title: "Direct Breeder Distribution",
-    description: "Building direct relationships with leading breeding operations to surface inventory, pricing, and availability ahead of public listing.",
-    highlight: "Partner network in development"
+    icon: Lock,
+    title: "Secure Data Infrastructure", 
+    description: "Enterprise-level security with end-to-end encryption and comprehensive access controls.",
   },
   {
-    icon: Shield,
-    title: "Embedded Financial Services",
-    description: "Future-ready tooling for syndication structuring and deal workflows — designed to integrate with the financial and insurance partners you already use.",
-    highlight: "Launching 2026"
+    icon: Zap,
+    title: "Seamless Integrations",
+    description: "Connect with your existing tools and workflows through our flexible API architecture.",
   },
 ]
-
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-    }
-  }
-}
-
-const item = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6 } }
-}
 
 export function DataMoat() {
   return (
@@ -55,59 +37,64 @@ export function DataMoat() {
           className="text-center mb-16"
         >
           <span className="text-emerald-400 text-sm font-semibold tracking-wider uppercase mb-4 block">
-            Our Edge
+            AI Infrastructure
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4">
-            The Data Moat.{" "}
-            <span className="text-zinc-500">Unforkable.</span>
+            The AI Layer for Breeding.
           </h2>
           <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
-            Three pillars that make Barn AI impossible to replicate.
+            Institutional-grade intelligence, secure data infrastructure, and advanced decision support—built for the modern breeding operation.
           </p>
         </motion.div>
 
-        {/* Cards Grid */}
+        {/* Capabilities Grid */}
         <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           viewport={{ once: true }}
           className="grid md:grid-cols-3 gap-6 lg:gap-8"
         >
-          {moatCards.map((card, idx) => {
-            const Icon = card.icon
+          {capabilities.map((capability, idx) => {
+            const Icon = capability.icon
             return (
-              <motion.div
+              <div
                 key={idx}
-                variants={item}
-                className="group relative bg-zinc-900/50 backdrop-blur-sm rounded-2xl p-8 border border-zinc-800/50 hover:border-emerald-500/30 transition-all duration-500"
+                className="group relative bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10 hover:border-emerald-500/30 transition-all duration-500"
               >
                 {/* Hover Glow */}
                 <div className="absolute inset-0 rounded-2xl bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
                 <div className="relative">
                   {/* Icon */}
-                  <div className="w-14 h-14 rounded-xl bg-zinc-800 flex items-center justify-center mb-6 group-hover:bg-emerald-500/20 transition-colors duration-300">
+                  <div className="w-14 h-14 rounded-xl bg-zinc-800/80 flex items-center justify-center mb-6 group-hover:bg-emerald-500/20 transition-colors duration-300">
                     <Icon className="w-7 h-7 text-emerald-400" />
                   </div>
 
                   {/* Content */}
                   <h3 className="text-xl font-bold text-white mb-3">
-                    {card.title}
+                    {capability.title}
                   </h3>
-                  <p className="text-zinc-400 leading-relaxed mb-6">
-                    {card.description}
+                  <p className="text-zinc-400 leading-relaxed">
+                    {capability.description}
                   </p>
-
-                  {/* Highlight Stat */}
-                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20">
-                    <div className="w-2 h-2 rounded-full bg-emerald-400" />
-                    <span className="text-sm text-emerald-400 font-medium">{card.highlight}</span>
-                  </div>
                 </div>
-              </motion.div>
+              </div>
             )
           })}
+        </motion.div>
+
+        {/* Bottom CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          viewport={{ once: true }}
+          className="mt-16 text-center"
+        >
+          <p className="text-zinc-500 text-sm">
+            Currently in private beta with select partners.
+          </p>
         </motion.div>
       </div>
     </section>

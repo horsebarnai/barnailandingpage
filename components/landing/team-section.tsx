@@ -10,7 +10,6 @@ const founders = [
     initials: "OK",
     role: "Co-Founder & CEO",
     bio: "Serial entrepreneur, technical builder, and attorney. Drives product, engineering, legal, and financial strategy across Barn AI. JD, University of Kentucky College of Law. BA Public Health, University of Louisville.",
-    image: null,
     linkedin: "#",
     twitter: "#",
   },
@@ -19,7 +18,22 @@ const founders = [
     initials: "BM",
     role: "Co-Founder & Industry SME",
     bio: "Raised in Central Kentucky's thoroughbred industry with deep multi-generational relationships across Lexington's breeding farms, stallion stations, bloodstock agencies, and auction houses. BA Finance from Transylvania University, where he was a member of the Men's Basketball team.",
-    image: null,
+    linkedin: "#",
+    twitter: "#",
+  },
+  {
+    name: "Dale Browning",
+    initials: "DB",
+    role: "Co-Founder & CFO",
+    bio: "Former Deloitte consultant and Co-Founder & CFO of Ridgerunner. Previously Chief Operations and Data Officer at Thrive365. University of Louisville. Based in Louisville, Kentucky.",
+    linkedin: "#",
+    twitter: "#",
+  },
+  {
+    name: "Mukund Venkatakrishnan",
+    initials: "MV",
+    role: "Co-Founder & Chief Strategy Officer",
+    bio: "2x founder — sold first med-tech company within Schmidt Futures. Won the HBS pitch contest with the idea for Upfront. While at Harvard, launched a real estate brokerage. Background across Box Group, crypto, and real-world assets.",
     linkedin: "#",
     twitter: "#",
   },
@@ -37,11 +51,11 @@ export function TeamSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 mb-6">
-            <span className="text-sm text-emerald-400 font-medium">Meet the Team</span>
-          </div>
+          <span className="text-emerald-400 text-sm font-semibold tracking-wider uppercase mb-4 block">
+            Leadership
+          </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6">
-            Built by Industry Insiders
+            Founding Team
           </h2>
           <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
             Our founding team combines deep expertise in equine breeding, institutional finance, and AI technology.
@@ -49,7 +63,7 @@ export function TeamSection() {
         </motion.div>
 
         {/* Founders Grid */}
-        <div className="grid sm:grid-cols-2 gap-6 lg:gap-8 max-w-2xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {founders.map((founder, index) => (
             <motion.div
               key={founder.name}
@@ -57,24 +71,17 @@ export function TeamSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative"
+              className="group"
             >
-              <div className="relative bg-zinc-900/50 border border-white/5 rounded-2xl p-6 hover:border-emerald-500/30 transition-all duration-300 hover:shadow-[0_0_30px_rgba(16,185,129,0.1)]">
+              {/* Glassmorphism Card */}
+              <div className="relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-6 hover:border-emerald-500/30 transition-all duration-300 hover:shadow-[0_0_30px_rgba(16,185,129,0.1)] h-full">
                 {/* Avatar */}
-                <div className="relative w-24 h-24 mx-auto mb-5">
-                  {founder.image ? (
-                    <img
-                      src={founder.image}
-                      alt={founder.name}
-                      className="w-full h-full rounded-full object-cover border-2 border-emerald-500/30"
-                    />
-                  ) : (
-                    <div className="w-full h-full rounded-full bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border-2 border-emerald-500/30 flex items-center justify-center">
-                      <span className="text-2xl font-bold text-emerald-400">
-                        {founder.initials}
-                      </span>
-                    </div>
-                  )}
+                <div className="relative w-20 h-20 mx-auto mb-5">
+                  <div className="w-full h-full rounded-full bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 border-2 border-emerald-500/30 flex items-center justify-center">
+                    <span className="text-xl font-bold text-emerald-400">
+                      {founder.initials}
+                    </span>
+                  </div>
                   {/* Glow effect on hover */}
                   <div className="absolute inset-0 rounded-full bg-emerald-500/20 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
@@ -83,7 +90,7 @@ export function TeamSection() {
                 <div className="text-center">
                   <h3 className="text-lg font-semibold text-white mb-1">{founder.name}</h3>
                   <p className="text-sm text-emerald-400 font-medium mb-3">{founder.role}</p>
-                  <p className="text-sm text-zinc-500 leading-relaxed mb-4">{founder.bio}</p>
+                  <p className="text-sm text-zinc-500 leading-relaxed mb-4 line-clamp-4">{founder.bio}</p>
 
                   {/* Social Links */}
                   <div className="flex items-center justify-center gap-3">
@@ -114,11 +121,11 @@ export function TeamSection() {
           transition={{ duration: 0.6, delay: 0.4 }}
           className="mt-20 text-center"
         >
-          <div className="max-w-3xl mx-auto p-8 rounded-2xl bg-gradient-to-b from-zinc-900/80 to-zinc-900/40 border border-white/5">
+          <div className="max-w-3xl mx-auto p-8 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
             <h3 className="text-xl font-semibold text-white mb-4">Our Mission</h3>
             <p className="text-zinc-400 leading-relaxed">
               We&apos;re building the institutional-grade infrastructure the equine industry deserves. 
-              By combining decades of pedigree data with cutting-edge AI, we&apos;re empowering breeders, 
+              By combining decades of industry expertise with cutting-edge AI, we&apos;re empowering breeders, 
               syndicates, and bloodstock agents to make smarter decisions—faster.
             </p>
           </div>

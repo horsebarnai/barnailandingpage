@@ -97,7 +97,7 @@ export function Hero() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-900/80 border border-zinc-800 mb-8"
             >
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span className="text-sm text-zinc-400">Now in Private Beta</span>
+              <span className="text-sm text-zinc-400">AI Intelligence and Integrations</span>
             </motion.div>
 
             {/* Headline */}
@@ -123,7 +123,7 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.4 }}
               className="text-lg sm:text-xl text-zinc-400 max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed"
             >
-              Institutional-grade pedigree analytics, syndicate asset management, and AI-powered breeding intelligence—all in one terminal.
+              An institutional-grade AI layer for the equine industry.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -143,10 +143,11 @@ export function Hero() {
               <Button
                 size="lg"
                 variant="outline"
-                className="border-zinc-700 bg-zinc-900/50 hover:bg-zinc-800/80 text-white px-8 py-6 text-lg rounded-full backdrop-blur-sm transition-all duration-300 group"
+                disabled
+                className="border-zinc-700 bg-zinc-900/50 text-zinc-500 px-8 py-6 text-lg rounded-full backdrop-blur-sm opacity-50 cursor-not-allowed"
               >
-                <Play className="mr-2 w-5 h-5 group-hover:scale-110 transition-transform" />
-                View Live Demo
+                <Play className="mr-2 w-5 h-5" />
+                View Live Demo (Coming Soon)
               </Button>
             </motion.div>
           </div>
