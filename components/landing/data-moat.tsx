@@ -40,10 +40,10 @@ export function DataMoat() {
             AI Infrastructure
           </span>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white mb-4">
-            The AI Layer for Breeding.
+            The AI Layer for Equine.
           </h2>
           <p className="text-lg text-zinc-400 max-w-2xl mx-auto">
-            Institutional-grade intelligence, secure data infrastructure, and advanced decision support—built for the modern breeding operation.
+            Institutional-grade intelligence, secure data infrastructure, and advanced decision support—built for the modern equine operation.
           </p>
         </motion.div>
 

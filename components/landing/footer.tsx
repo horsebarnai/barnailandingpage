@@ -3,29 +3,13 @@
 import Link from "next/link"
 
 const footerLinks = {
-  product: [
-    { name: "Platform", href: "#platform" },
-    { name: "AI Matcher", href: "#" },
-    { name: "Pedigree Web", href: "#" },
-    { name: "Syndicate Tools", href: "#" },
-    { name: "Pricing", href: "#" },
-  ],
   company: [
-    { name: "About", href: "#" },
-    { name: "Careers", href: "#", comingSoon: true },
-    { name: "Blog", href: "#", comingSoon: true },
-    { name: "Press", href: "#", comingSoon: true },
-  ],
-  resources: [
-    { name: "Documentation", href: "#", comingSoon: true },
-    { name: "API Reference", href: "#", comingSoon: true },
-    { name: "Status", href: "#", comingSoon: true },
-    { name: "Support", href: "#" },
+    { name: "About", href: "#about" },
+    { name: "Contact", href: "#contact" },
   ],
   legal: [
     { name: "Privacy Policy", href: "#" },
     { name: "Terms of Service", href: "#" },
-    { name: "Cookie Policy", href: "#" },
   ],
 }
 
@@ -34,9 +18,9 @@ export function Footer() {
     <footer className="relative border-t border-zinc-800/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-2 md:grid-cols-5 gap-8 lg:gap-12 mb-16">
+        <div className="flex flex-col md:flex-row justify-between gap-8 mb-12">
           {/* Brand Column */}
-          <div className="col-span-2 md:col-span-1">
+          <div className="max-w-xs">
             <div className="flex items-center gap-2 mb-4">
               <svg viewBox="0 0 32 32" className="w-8 h-8" fill="none">
                 <rect x="4" y="20" width="24" height="10" rx="3" fill="#4ADE80" />
@@ -46,115 +30,50 @@ export function Footer() {
               <span className="text-lg font-bold text-white">barn ai</span>
             </div>
             <p className="text-sm text-zinc-500 leading-relaxed">
-              The institutional-grade back office for the modern equine industry.
+              AI infrastructure for the equine industry.
             </p>
           </div>
 
-          {/* Product */}
-          <div>
-            <h3 className="text-sm font-semibold text-white mb-4">Product</h3>
-            <ul className="space-y-3">
-              {footerLinks.product.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-sm text-zinc-500 hover:text-white transition-colors">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h3 className="text-sm font-semibold text-white mb-4">Company</h3>
-            <ul className="space-y-3">
-              {footerLinks.company.map((link) => (
-                <li key={link.name}>
-                  {link.comingSoon ? (
-                    <span className="text-sm text-zinc-600 cursor-not-allowed group relative">
-                      {link.name}
-                      <span className="absolute left-0 -top-8 bg-zinc-800 text-zinc-400 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                        Coming soon
-                      </span>
-                    </span>
-                  ) : (
+          {/* Links */}
+          <div className="flex gap-16">
+            {/* Company */}
+            <div>
+              <h3 className="text-sm font-semibold text-white mb-4">Company</h3>
+              <ul className="space-y-3">
+                {footerLinks.company.map((link) => (
+                  <li key={link.name}>
                     <Link href={link.href} className="text-sm text-zinc-500 hover:text-white transition-colors">
                       {link.name}
                     </Link>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-          {/* Resources */}
-          <div>
-            <h3 className="text-sm font-semibold text-white mb-4">Resources</h3>
-            <ul className="space-y-3">
-              {footerLinks.resources.map((link) => (
-                <li key={link.name}>
-                  {link.comingSoon ? (
-                    <span className="text-sm text-zinc-600 cursor-not-allowed group relative">
-                      {link.name}
-                      <span className="absolute left-0 -top-8 bg-zinc-800 text-zinc-400 text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                        Coming soon
-                      </span>
-                    </span>
-                  ) : (
+            {/* Legal */}
+            <div>
+              <h3 className="text-sm font-semibold text-white mb-4">Legal</h3>
+              <ul className="space-y-3">
+                {footerLinks.legal.map((link) => (
+                  <li key={link.name}>
                     <Link href={link.href} className="text-sm text-zinc-500 hover:text-white transition-colors">
                       {link.name}
                     </Link>
-                  )}
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Legal */}
-          <div>
-            <h3 className="text-sm font-semibold text-white mb-4">Legal</h3>
-            <ul className="space-y-3">
-              {footerLinks.legal.map((link) => (
-                <li key={link.name}>
-                  <Link href={link.href} className="text-sm text-zinc-500 hover:text-white transition-colors">
-                    {link.name}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-zinc-800/50 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-2 text-sm text-zinc-500">
-            <svg viewBox="0 0 32 32" className="w-5 h-5" fill="none">
-              <rect x="4" y="20" width="24" height="10" rx="3" fill="#4ADE80" opacity="0.5" />
-              <rect x="6" y="14" width="20" height="4" rx="1" fill="#4ADE80" opacity="0.4" />
-              <rect x="8" y="10" width="16" height="3" rx="1" fill="#4ADE80" opacity="0.3" />
-            </svg>
-            <span>© 2026 Barn AI, Inc. All rights reserved.</span>
-          </div>
-          
-          <div className="flex items-center gap-6">
-            <Link href="#" className="text-sm text-zinc-500 hover:text-white transition-colors">
-              Privacy Policy
-            </Link>
-            <Link href="#" className="text-sm text-zinc-500 hover:text-white transition-colors">
-              Terms of Service
-            </Link>
-            <Link href="#" className="text-sm text-zinc-500 hover:text-white transition-colors">
-              Contact Support
-            </Link>
-          </div>
-        </div>
-
-        {/* Delaware Badge */}
-        <div className="mt-8 text-center">
-          <p className="text-xs text-zinc-600">
-            Barn AI, Inc. is a Delaware C-Corporation
+        <div className="pt-8 border-t border-zinc-800/50 text-center">
+          <p className="text-sm text-zinc-500">
+            © 2026 Barn AI. All rights reserved.
           </p>
         </div>
+
+
       </div>
     </footer>
   )
