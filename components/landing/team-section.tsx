@@ -7,7 +7,7 @@ const founders = [
     name: "Om Kanmadikar",
     initials: "OK",
     role: "FOUNDER & CHIEF EXECUTIVE OFFICER",
-    bio: "Serial entrepreneur, technical builder, and attorney. Leads product vision, engineering, and legal strategy. Former Kentucky State Junior Champion (2014). JD, University of Kentucky.",
+    bio: "Serial entrepreneur, technical builder, and attorney. Leads product vision, engineering, and legal strategy. JD, University of Kentucky.",
   },
   {
     name: "Bill Murphy",
