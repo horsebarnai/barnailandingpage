@@ -9,8 +9,7 @@ const founders = [
     name: "Om Kanmadikar",
     initials: "OK",
     role: "Co-Founder & CEO",
-    bio: "Serial entrepreneur, technical builder, and
- attorney. Drives product, engineering, legal, and financial strategy across Barn AI. JD, University of Kentucky College of Law. BA Public Health, University of Louisville.",
+    bio: "Serial entrepreneur, technical builder, and attorney. Drives product, engineering, legal, and financial strategy across Barn AI. JD, University of Kentucky College of Law. BA Public Health, University of Louisville.",
     image: null,
     linkedin: "#",
     twitter: "#",
@@ -19,7 +18,7 @@ const founders = [
     name: "Bill Murphy",
     initials: "BM",
     role: "Co-Founder & Industry SME",
-    bio: "Raised in Central Kentucky's thoroughbred industry with deep multi-generational relationships across Lexington's breeding farms, stallion stations, bloodstock agencies, and auction houses. BA Finance from Transylvania University, where he was a member of weof the Men's Basketball team.",
+    bio: "Raised in Central Kentucky's thoroughbred industry with deep multi-generational relationships across Lexington's breeding farms, stallion stations, bloodstock agencies, and auction houses. BA Finance from Transylvania University, where he was a member of the Men's Basketball team.",
     image: null,
     linkedin: "#",
     twitter: "#",

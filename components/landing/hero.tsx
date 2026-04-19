@@ -194,11 +194,6 @@ export function Hero() {
                   contain: "layout paint size",
                 }}
               />
-
-
-                  ))}
-                </div>
-              </motion.div>
             </div>
           </motion.div>
         </div>
