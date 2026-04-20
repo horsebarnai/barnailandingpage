@@ -15,6 +15,9 @@ const markers = [
   { location: [48.8566, 2.3522], size: 0.05 }, // Paris
   { location: [-33.8688, 151.2093], size: 0.05 }, // Sydney
   { location: [53.3498, -6.2603], size: 0.05 }, // Dublin
+  { location: [40.7128, -74.0060], size: 0.05 }, // New York
+  { location: [-23.5505, -46.6333], size: 0.05 }, // Sao Paulo
+  { location: [1.3521, 103.8198], size: 0.05 }, // Singapore
 ]
 
 export function Hero() {

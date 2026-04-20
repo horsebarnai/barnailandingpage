@@ -24,7 +24,7 @@ const founders = [
   {
     name: "Dale Browning",
     initials: "DB",
-    role: "CHIEF FINANCIAL OFFICER & INTERIM CHIEF OPERATIONS OFFICER",
+    role: "CHIEF FINANCIAL OFFICER",
     bio: "20+ years across finance, strategy, and AI. Executive leadership from startups to Fortune 500. University of Louisville, Deloitte, Humana.",
   },
 ]
