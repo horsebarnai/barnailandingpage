@@ -167,6 +167,26 @@ export function Hero() {
               {/* Glow behind globe */}
               <div className="absolute inset-0 bg-emerald-500/20 rounded-full blur-3xl transform scale-75" />
               
+              {/* Orbital dots outside the globe */}
+              <motion.div
+                className="absolute w-3 h-3 bg-emerald-400 rounded-full shadow-[0_0_12px_rgba(74,222,128,0.8)]"
+                style={{ top: '8%', right: '12%' }}
+                animate={{ 
+                  y: [0, -8, 0],
+                  opacity: [0.7, 1, 0.7]
+                }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <motion.div
+                className="absolute w-2 h-2 bg-emerald-400 rounded-full shadow-[0_0_10px_rgba(74,222,128,0.7)]"
+                style={{ bottom: '15%', left: '5%' }}
+                animate={{ 
+                  y: [0, 6, 0],
+                  opacity: [0.6, 1, 0.6]
+                }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+              />
+              
               <canvas
                 ref={canvasRef}
                 onPointerDown={(e) => {
