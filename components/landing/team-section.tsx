@@ -18,7 +18,7 @@ const founders = [
   {
     name: "Mukund Venkatakrishnan",
     initials: "MV",
-    role: "CHIEF STRATEGY OFFICER",
+    role: "CHIEF STRATEGY OFFICER & CHIEF OF AI",
     bio: "2x founder — sold first med-tech company within Schmidt Futures. CEO of Upfront. Harvard College, Math & Philosophy. Background across Box Group, crypto, and real-world assets.",
   },
   {
