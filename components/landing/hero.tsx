@@ -29,6 +29,7 @@ export function Hero() {
   useEffect(() => {
     let phi = 0
     let width = 0
+    let globe: ReturnType<typeof createGlobe> | null = null
 
     const onResize = () => {
       if (canvasRef.current) {
@@ -40,7 +41,7 @@ export function Hero() {
 
     if (!canvasRef.current) return
 
-    const globe = createGlobe(canvasRef.current, {
+    globe = createGlobe(canvasRef.current, {
       devicePixelRatio: 2,
       width: width * 2,
       height: width * 2,
@@ -66,8 +67,14 @@ export function Hero() {
     })
 
     return () => {
-      globe.destroy()
       window.removeEventListener("resize", onResize)
+      if (globe) {
+        try {
+          globe.destroy()
+        } catch (e) {
+          // Globe may already be destroyed if canvas was removed
+        }
+      }
     }
   }, [])
 
