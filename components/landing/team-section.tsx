@@ -7,7 +7,7 @@ const founders = [
     name: "Om Kanmadikar",
     initials: "OK",
     role: "FOUNDER & CHIEF EXECUTIVE OFFICER",
-    bio: "Serial entrepreneur, technical builder, and attorney. Leads product vision, engineering, and legal strategy. JD, University of Kentucky.",
+    bio: "Serial entrepreneur, technical builder, and attorney. Leads product vision, engineering, and legal strategy. Former nationally ranked youth chess player & 2014 Kentucky Junior Chess Champion. Background in law, capital markets, strategy. JD, University of Kentucky.",
   },
   {
     name: "Bill Murphy",
@@ -16,16 +16,16 @@ const founders = [
     bio: "Lifelong horseman. Raised in Central Kentucky's thoroughbred industry — multi-generational relationships across Lexington's farms, stallion stations, and auction houses. Background across equine and global equine transport. BA Finance, Transylvania University.",
   },
   {
-    name: "Mukund Venkatakrishnan",
-    initials: "MV",
-    role: "CHIEF STRATEGY OFFICER & CHIEF OF AI",
-    bio: "2x founder — sold first med-tech company within Schmidt Futures. CEO of Upfront. Harvard College, Math & Philosophy. Background across Box Group, crypto, and real-world assets.",
-  },
-  {
     name: "Dale Browning",
     initials: "DB",
     role: "CHIEF FINANCIAL OFFICER",
-    bio: "20+ years across finance, strategy, and AI. Executive leadership from startups to Fortune 500. University of Louisville, Deloitte, Humana.",
+    bio: "Established veteran, 20+ years across finance, strategy, and AI from startups to Fortune 500. Deloitte, Humana. Accounting, University of Louisville.",
+  },
+  {
+    name: "Mukund Venkatakrishnan",
+    initials: "MV",
+    role: "HEAD OF INNOVATION AND STRATEGY",
+    bio: "2x founder. Sold first med-tech company within Schmidt Futures. Current CEO of UpFront. Background across Box Group, crypto, and real-world assets. Pure Math & Philosophy, Harvard College.",
   },
 ]
 
