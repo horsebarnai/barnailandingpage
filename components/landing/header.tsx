@@ -25,17 +25,22 @@ export function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5">
-            <svg viewBox="0 0 32 24" className="w-7 h-5" fill="none">
-              <path
-                d="M16 2C10 2 4 8 4 16V22H8V16C8 12 11 8 16 8C21 8 24 12 24 16V22H28V16C28 8 22 2 16 2Z"
-                fill="#4ADE80"
-              />
-              <path
-                d="M12 22V16C12 14 13.5 12 16 12C18.5 12 20 14 20 16V22H12Z"
-                fill="#4ADE80"
-              />
-            </svg>
+          <Link href="/" className="flex items-center gap-3">
+            <motion.img
+              src="/barn-ai-shard.svg"
+              alt=""
+              width={32}
+              height={36}
+              className="block h-9 w-auto"
+              style={{
+                // Layered drop-shadows: faint white inner halo + pale green outer
+                // → makes the mark feel embedded in the dark UI rather than floating
+                filter:
+                  "drop-shadow(0 0 4px rgba(255, 255, 255, 0.12)) drop-shadow(0 0 10px rgba(167, 243, 208, 0.10))",
+              }}
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+            />
             <span className="text-xl font-bold tracking-tight text-white">barn ai</span>
           </Link>
 

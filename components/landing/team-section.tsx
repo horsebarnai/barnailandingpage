@@ -19,7 +19,7 @@ const founders = [
     name: "Dale Browning",
     initials: "DB",
     role: "CHIEF FINANCIAL OFFICER",
-    bio: "Established veteran, 20+ years across finance, strategy, and AI from startups to Fortune 500. Deloitte, Humana. Accounting, University of Louisville.",
+    bio: "Established veteran, 20+ years across finance, strategy, and AI from startups to Fortune 500. Deloitte, Humana. BSBA, University of Louisville.",
   },
   {
     name: "Mukund Venkatakrishnan",

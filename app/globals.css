@@ -152,3 +152,143 @@
 .animate-float {
   animation: float 6s ease-in-out infinite;
 }
+
+/* Settlement Waterfall — "liquid" pulses traveling along stream paths.
+   The base stroke is statically drawn; this overlay has a 4px dash
+   followed by a 36px gap, and we shift the dashoffset to make the
+   visible dash appear to flow downstream. */
+@keyframes settlement-flow {
+  from { stroke-dashoffset: 0; }
+  to   { stroke-dashoffset: -160; }
+}
+.settlement-flow {
+  animation: settlement-flow 3.5s linear infinite;
+}
+
+/* =================================================================
+   Heritage Depth + Sovereignty Vault — fonts & module animations
+   ================================================================= */
+
+.font-display {
+  font-family: var(--font-playfair), Georgia, "Times New Roman", serif;
+}
+.font-tech {
+  font-family: var(--font-space-grotesk), "Space Mono", ui-monospace, monospace;
+}
+
+/* ---- Heritage label flicker: one-shot glitchy fade-in,
+        triggered by adding the class when scroll reaches threshold. */
+@keyframes heritage-flicker {
+  0%   { opacity: 0.2; }
+  8%   { opacity: 1; }
+  14%  { opacity: 0.3; }
+  20%  { opacity: 1; }
+  28%  { opacity: 0.6; }
+  36%  { opacity: 1; }
+  50%  { opacity: 0.4; }
+  58%  { opacity: 1; }
+  72%  { opacity: 0.8; }
+  80%  { opacity: 1; }
+  100% { opacity: 0.95; }
+}
+.heritage-flicker {
+  animation: heritage-flicker 0.9s steps(24) forwards;
+}
+
+/* ---- Sovereignty Vault: hex code columns drifting downward */
+@keyframes hex-scroll {
+  from { transform: translateY(-50%); }
+  to   { transform: translateY(0%); }
+}
+.hex-column {
+  animation-name: hex-scroll;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+/* ---- Vault breathe: barely-perceptible 1° drift to suggest "live"
+        without breaking the cube's stationary character. */
+@keyframes vault-breathe {
+  0%, 100% { transform: rotateX(-15deg) rotateY(-22deg); }
+  50%      { transform: rotateX(-16deg) rotateY(-21deg); }
+}
+
+/* ---- The 3D cube + nested monolith ---- */
+.vault-stage {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  perspective: 1400px;
+  perspective-origin: 50% 42%;
+}
+.vault-3d {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  animation: vault-breathe 14s ease-in-out infinite;
+}
+
+.vault-face,
+.vault-mface {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  box-sizing: border-box;
+}
+
+/* Outer cube — 280px wireframe shell */
+.vault-outer .vault-face {
+  width: 280px;
+  height: 280px;
+  margin-left: -140px;
+  margin-top: -140px;
+  border: 1px solid rgba(30, 168, 102, 0.55);
+  background: rgba(30, 168, 102, 0.014);
+}
+.vault-outer .front  { transform: translateZ(140px); }
+.vault-outer .back   { transform: translateZ(-140px) rotateY(180deg); }
+.vault-outer .left   { transform: rotateY(-90deg) translateZ(140px); }
+.vault-outer .right  { transform: rotateY(90deg)  translateZ(140px); }
+.vault-outer .top    { transform: rotateX(90deg)  translateZ(140px); }
+.vault-outer .bottom { transform: rotateX(-90deg) translateZ(140px); }
+
+/* Inner monolith — narrower, taller, grid-textured */
+.vault-monolith .vault-mface {
+  border: 1px solid rgba(30, 168, 102, 0.6);
+  background-color: rgba(10, 15, 12, 0.72);
+  background-image:
+    repeating-linear-gradient(to right,  rgba(30, 168, 102, 0.28) 0 1px, transparent 1px 14px),
+    repeating-linear-gradient(to bottom, rgba(30, 168, 102, 0.28) 0 1px, transparent 1px 14px);
+}
+.vault-monolith .vault-mface.front,
+.vault-monolith .vault-mface.back {
+  width: 120px; height: 190px;
+  margin-left: -60px; margin-top: -95px;
+}
+.vault-monolith .vault-mface.left,
+.vault-monolith .vault-mface.right {
+  width: 100px; height: 190px;
+  margin-left: -50px; margin-top: -95px;
+}
+.vault-monolith .vault-mface.top,
+.vault-monolith .vault-mface.bottom {
+  width: 120px; height: 100px;
+  margin-left: -60px; margin-top: -50px;
+}
+.vault-monolith .front  { transform: translateZ(50px); }
+.vault-monolith .back   { transform: translateZ(-50px) rotateY(180deg); }
+.vault-monolith .left   { transform: rotateY(-90deg) translateZ(60px); }
+.vault-monolith .right  { transform: rotateY(90deg)  translateZ(60px); }
+.vault-monolith .top    { transform: rotateX(90deg)  translateZ(95px); }
+.vault-monolith .bottom { transform: rotateX(-90deg) translateZ(95px); }
+
+/* Mobile: shrink the entire 3D scene without re-doing the math */
+@media (max-width: 768px) {
+  .vault-3d {
+    animation-name: none;
+    transform: rotateX(-15deg) rotateY(-22deg) scale(0.68);
+  }
+}
