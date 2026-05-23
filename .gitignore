@@ -15,6 +15,7 @@ node_modules
 .next/
 .DS_Store
 .vercel
+tsconfig.tsbuildinfo
 
 # Don't commit npm lockfile — pnpm-lock.yaml is canonical for this repo
 package-lock.json

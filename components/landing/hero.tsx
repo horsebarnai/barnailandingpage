@@ -267,11 +267,14 @@ export function Hero() {
               className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4"
             >
               <Button
+                asChild
                 size="lg"
                 className="bg-emerald-500 hover:bg-emerald-400 text-black font-semibold px-8 py-6 text-lg rounded-full shadow-[0_0_30px_rgba(74,222,128,0.5)] hover:shadow-[0_0_50px_rgba(74,222,128,0.7)] transition-all duration-300 group"
               >
-                Request Early Access
-                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <a href="#contact">
+                  Request Early Access
+                  <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                </a>
               </Button>
               <Button
                 size="lg"
