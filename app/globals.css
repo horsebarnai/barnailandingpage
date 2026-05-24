@@ -7,6 +7,13 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Custom cursor — emerald triangle from /public/cursor.svg.
+   Hotspot at the tip (3, 3). Buttons / links keep native pointer. */
+html,
+body {
+  cursor: url('/cursor.svg') 3 3, auto;
+}
+
 :root {
   --background: oklch(0 0 0);
   --foreground: oklch(0.985 0 0);

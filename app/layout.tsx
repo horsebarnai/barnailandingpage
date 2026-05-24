@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { Inter, Geist_Mono, Playfair_Display, Space_Grotesk } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
-import { MagneticCursor } from '@/components/magnetic-cursor'
 import { Toaster } from '@/components/ui/sonner'
 import './globals.css'
 
@@ -40,8 +39,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${geistMono.variable} ${playfair.variable} ${spaceGrotesk.variable} bg-black`}>
-      <body className="font-sans antialiased bg-black text-white cursor-none">
-        <MagneticCursor />
+      <body className="font-sans antialiased bg-black text-white">
         {children}
         <Toaster theme="dark" richColors position="bottom-right" />
         {process.env.NODE_ENV === 'production' && <Analytics />}
