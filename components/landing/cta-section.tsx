@@ -19,11 +19,18 @@ export function CTASection() {
     register,
     handleSubmit,
     reset,
+    watch,
     formState: { errors },
   } = useForm<ContactPayload>({
     resolver: zodResolver(contactSchema),
     defaultValues: { name: "", email: "", message: "", company_website: "" },
   })
+
+  const MESSAGE_MAX = 200
+  const messageValue = watch("message") ?? ""
+  const remaining = MESSAGE_MAX - messageValue.length
+  const nearLimit = remaining <= 20
+  const atLimit = remaining <= 0
 
   const onSubmit = handleSubmit(async (values) => {
     setSubmitting(true)
@@ -131,12 +138,27 @@ export function CTASection() {
           </div>
 
           <div className="space-y-2 mt-4">
-            <Label htmlFor="message" className="text-zinc-300">
-              Message
-            </Label>
+            <div className="flex items-baseline justify-between">
+              <Label htmlFor="message" className="text-zinc-300">
+                Message
+              </Label>
+              <span
+                className={`font-mono text-[11px] tabular-nums transition-colors ${
+                  atLimit
+                    ? "text-red-400"
+                    : nearLimit
+                      ? "text-amber-400"
+                      : "text-zinc-600"
+                }`}
+                aria-live="polite"
+              >
+                {messageValue.length} / {MESSAGE_MAX}
+              </span>
+            </div>
             <Textarea
               id="message"
               rows={4}
+              maxLength={MESSAGE_MAX}
               placeholder="Tell us about your operation and what you're looking to solve."
               aria-invalid={!!errors.message}
               className="bg-zinc-900/70 border-zinc-800 text-white placeholder:text-zinc-600 min-h-28"
