@@ -144,10 +144,10 @@ export function SovereigntyVault() {
             <span className="ml-2">SECURITY · PRIVACY</span>
           </div>
           <h2 className="font-display text-4xl font-medium leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Institutional <span className="italic text-slate-400">Sovereignty</span>
+            The Privacy of <span className="italic text-slate-400">a Private Bank.</span>
           </h2>
           <p className="mx-auto mt-6 max-w-xl font-tech text-base leading-relaxed text-slate-400 lg:text-lg">
-            Your data is air-gapped, encrypted, and yours. Always.
+            Your operation's history is air-gapped, encrypted, and irrevocably yours. The world does not see what you do not show it.
           </p>
         </motion.div>
 

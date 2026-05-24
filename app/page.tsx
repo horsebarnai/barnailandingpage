@@ -11,7 +11,6 @@ import { OldVsNew } from "@/components/landing/old-vs-new"
 import { TimeSavedCalculator } from "@/components/landing/time-saved-calculator"
 import { SettlementWaterfall } from "@/components/landing/settlement-waterfall"
 import { CTASection } from "@/components/landing/cta-section"
-import { TeamSection } from "@/components/landing/team-section"
 import { Footer } from "@/components/landing/footer"
 
 export default function LandingPage() {
@@ -27,7 +26,6 @@ export default function LandingPage() {
       <HeritageDepth />
       <SovereigntyVault />
       <SettlementWaterfall />
-      <TeamSection />
       <CTASection />
       <Footer />
     </main>

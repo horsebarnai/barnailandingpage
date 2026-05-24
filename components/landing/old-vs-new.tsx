@@ -4,17 +4,17 @@ import { motion } from "framer-motion"
 import { Check, X } from "lucide-react"
 
 const OLD_WAY = [
-  "Texting 20 owners individually with race updates.",
-  "Manually chasing breeding certificates and vet records.",
-  "Hunting down pedigree stats across outdated legacy sites.",
-  "Manual contract drafting and slow legal turnarounds.",
+  "Chasing twenty owners through twenty text threads.",
+  "Hunting breeding certificates and vet records by phone.",
+  "Cross-referencing four legacy databases for one pedigree.",
+  "Settlements that take weeks. Disputes that strain relationships.",
 ]
 
 const NEW_WAY = [
-  "One-click syndicate updates pushed to all co-owners.",
-  "Auto-generated digital agreements and secure storage.",
-  "Instant, AI-driven pedigree matchup and analysis reports.",
-  "A unified dashboard tracking your entire stable's operations.",
+  "Every owner sees their position. In real time. Automatically.",
+  "Agreements that draft themselves. Records that find themselves.",
+  "Pedigree decisions backed by the only model that knows what happened next.",
+  "Your operation, legible. To you. To your partners. To your heirs.",
 ]
 
 export function OldVsNew() {
@@ -38,14 +38,14 @@ export function OldVsNew() {
           </div>
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-4">
             <span className="bg-gradient-to-r from-white via-zinc-200 to-zinc-400 bg-clip-text text-transparent">
-              A different way to{" "}
+              What Has Been{" "}
             </span>
             <span className="bg-gradient-to-r from-emerald-400 via-emerald-300 to-emerald-500 bg-clip-text text-transparent">
-              run the barn.
+              Missing.
             </span>
           </h2>
           <p className="text-base sm:text-lg text-zinc-500 max-w-2xl mx-auto">
-            Same job. Modern tooling.
+            You command an asset class that moves the world. Until now, you have run it with the tools of a hobbyist. That is over.
           </p>
         </div>
 

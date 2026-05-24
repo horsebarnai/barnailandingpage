@@ -268,10 +268,10 @@ export function GeneticSandbox() {
             Genetic Sandbox
           </span>
           <h2 className="mb-4 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-            Run a <span className="text-zinc-500">Nicking</span> Analysis.
+            The Question <span className="text-zinc-500">Every</span> Breeder Asks.
           </h2>
           <p className="mx-auto max-w-xl text-base text-zinc-400 lg:text-lg">
-            Sire × Dam compatibility, scored on proprietary models.
+            Sire × Dam compatibility, answered by the only model trained on fifty years of outcomes.
           </p>
         </motion.div>
 

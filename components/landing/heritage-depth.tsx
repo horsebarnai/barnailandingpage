@@ -198,11 +198,11 @@ export function HeritageDepth() {
             <h2
               className="font-display text-4xl font-medium leading-[1.05] tracking-tight text-white sm:text-5xl lg:text-6xl"
             >
-              Lineage <span className="italic text-slate-400">Depth</span>
+              Five Hundred Generations. <span className="italic text-slate-400">Mapped.</span>
             </h2>
 
             <p className="mt-6 max-w-lg font-tech text-base leading-relaxed text-slate-400 lg:text-lg">
-              The complete thoroughbred genome, mapped to the root.
+              The complete thoroughbred record, from your foal back to the foundation sires. Continuous. Indexed. Yours to query.
             </p>
 
             <div className="mt-10 grid max-w-md grid-cols-2 gap-4 border-t border-slate-800/60 pt-6 font-tech">

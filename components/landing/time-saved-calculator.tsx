@@ -36,10 +36,10 @@ export function TimeSavedCalculator() {
           </div>
           <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-3">
             <span className="bg-gradient-to-r from-white via-zinc-200 to-zinc-400 bg-clip-text text-transparent">
-              How much time could{" "}
+              The Hours You{" "}
             </span>
             <span className="bg-gradient-to-r from-emerald-400 via-emerald-300 to-emerald-500 bg-clip-text text-transparent">
-              you reclaim?
+              Get Back.
             </span>
           </h3>
         </div>
@@ -52,7 +52,7 @@ export function TimeSavedCalculator() {
                 htmlFor="horse-count"
                 className="text-sm sm:text-base text-zinc-400"
               >
-                How many horses or syndicates do you manage?
+                How many horses or syndicates does your house manage?
               </label>
               <span className="font-mono text-2xl sm:text-3xl font-bold text-emerald-400 tabular-nums">
                 {displayValue}
@@ -77,7 +77,7 @@ export function TimeSavedCalculator() {
           {/* Result */}
           <div className="text-center border-t border-zinc-800/70 pt-8">
             <div className="text-xs font-mono uppercase tracking-[0.2em] text-zinc-500 mb-2">
-              Estimated Admin Hours Saved per Week
+              Hours returned to the work you came in for.
             </div>
             <div className="flex items-baseline justify-center gap-2">
               <span className="text-5xl sm:text-6xl md:text-7xl font-bold bg-gradient-to-r from-emerald-400 via-emerald-300 to-emerald-500 bg-clip-text text-transparent tabular-nums">
@@ -86,7 +86,7 @@ export function TimeSavedCalculator() {
               <span className="text-xl sm:text-2xl text-zinc-400 font-medium">hrs</span>
             </div>
             <p className="mt-6 text-sm sm:text-base text-zinc-500 italic max-w-md mx-auto">
-              Spend those extra hours where it matters — at the barn and the racetrack.
+              The administrative friction of the business does not disappear. It moves below the surface.
             </p>
           </div>
         </div>
