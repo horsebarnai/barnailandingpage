@@ -241,11 +241,11 @@ export function Hero() {
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-6"
             >
               <span className="bg-gradient-to-r from-white via-zinc-200 to-zinc-400 bg-clip-text text-transparent">
-                The Ultimate Back Office
+                The AI Operating System
               </span>
               <br />
               <span className="bg-gradient-to-r from-emerald-400 via-emerald-300 to-emerald-500 bg-clip-text text-transparent">
-                for the Equine Industry.
+                of the Horse Industry.
               </span>
             </motion.h1>
 
@@ -256,7 +256,9 @@ export function Hero() {
               transition={{ duration: 0.7, delay: 0.4 }}
               className="text-lg sm:text-xl text-zinc-400 max-w-xl mx-auto lg:mx-0 mb-10 leading-relaxed"
             >
-              An institutional-grade AI layer for the equine industry.
+              The back-office terminal built to simplify your equine operations.
+              Streamline your syndicate management, run instant pedigree analytics,
+              and automate your deal flow — less paperwork, more time at the racetrack.
             </motion.p>
 
             {/* CTA Buttons */}

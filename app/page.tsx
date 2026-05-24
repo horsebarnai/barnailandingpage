@@ -7,6 +7,8 @@ import { HeritageDepth } from "@/components/landing/heritage-depth"
 import { SovereigntyVault } from "@/components/landing/sovereignty-vault"
 import { ShowcaseTabs } from "@/components/landing/showcase-tabs"
 import { DataMoat } from "@/components/landing/data-moat"
+import { OldVsNew } from "@/components/landing/old-vs-new"
+import { TimeSavedCalculator } from "@/components/landing/time-saved-calculator"
 import { SettlementWaterfall } from "@/components/landing/settlement-waterfall"
 import { CTASection } from "@/components/landing/cta-section"
 import { TeamSection } from "@/components/landing/team-section"
@@ -19,6 +21,8 @@ export default function LandingPage() {
       <Hero />
       <ShowcaseTabs />
       <DataMoat />
+      <OldVsNew />
+      <TimeSavedCalculator />
       <GeneticSandbox />
       <HeritageDepth />
       <SovereigntyVault />
