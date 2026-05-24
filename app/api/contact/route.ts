@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 import { contactSchema } from "@/lib/contact-schema"
 import { getSupabaseAdmin } from "@/lib/supabase-admin"
+import { sendContactNotification } from "@/lib/notify-email"
 
 export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
@@ -47,6 +48,14 @@ export async function POST(request: Request) {
   } catch (err) {
     console.error("[contact] unexpected error:", err)
     return NextResponse.json({ ok: false, error: "server_error" }, { status: 500 })
+  }
+
+  // Fire-and-log email notification. Best-effort — never blocks the user's
+  // success response, since the submission is already safely in the database.
+  try {
+    await sendContactNotification({ name, email, message })
+  } catch (err) {
+    console.error("[contact] notify-email threw:", err)
   }
 
   return NextResponse.json({ ok: true }, { status: 200 })
