@@ -133,6 +133,31 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Italic emerald accents use `bg-clip-text text-transparent` to paint
+     the text with a gradient. Italic glyphs slant past their painted
+     bounding box on the right; combined with the `overflow-hidden`
+     containers most sections use for blur effects, the last letter of
+     every italic accent gets clipped. Give every italic span a small
+     trailing run-out so the overhang has room to render.
+
+     Targeted enough that it doesn't affect non-clipped italic text
+     (which is rare on this site anyway). */
+  .italic.bg-clip-text {
+    padding-inline-end: 0.12em;
+    margin-inline-end: 0.04em;
+  }
+
+  /* Same problem hits italic spans inside `bg-clip-text` parents — and
+     a handful of standalone italic accents (CTA labels, button text).
+     A faint trailing margin keeps them clear of right-side clipping
+     without measurable layout cost. */
+  em,
+  i,
+  .font-display.italic,
+  span.italic {
+    padding-inline-end: 0.04em;
+  }
 }
 
 /* Custom animations */
