@@ -26,9 +26,9 @@ import {
   type PlatformTopicSlug,
 } from "@/lib/site-content/platform"
 
-import { BarnOperatingSystem } from "@/components/landing/barn-operating-system"
 import { GeneticSandbox } from "@/components/landing/genetic-sandbox"
 import { HeritageDepth } from "@/components/landing/heritage-depth"
+import { MorningBrief } from "@/components/landing/morning-brief"
 import { RegulatoryCompliance } from "@/components/landing/regulatory-compliance"
 import { SettlementWaterfall } from "@/components/landing/settlement-waterfall"
 import { SovereigntyVault } from "@/components/landing/sovereignty-vault"
@@ -78,17 +78,28 @@ export function SolutionPageClient({ source }: { source: SolutionSource }) {
     }
   })()
 
-  /* The BarnOS editorial block — moved off the landing page and onto
-     Stable & Syndicate Management, where the "back office that runs
-     itself" message lands hardest. */
+  /* Editorial intro for Stable & Syndicate Management — a cream
+     "morning brief" preview of what a day on Barn AI looks like.
+     Intentionally inverts the dark palette so it lands like a
+     beam of light mid-page. */
   const intro =
-    source.kind === "farm-management" ? <BarnOperatingSystem /> : undefined
+    source.kind === "farm-management" ? <MorningBrief /> : undefined
 
-  /* Category pages act as directories — the mega menu + workflow-agents
-     hub already enumerate the sub-modules, so we suppress the
-     duplicate Features + Related grids here. Agent and platform-topic
-     pages keep them since that's where the depth belongs. */
-  const isCategory =
+  /* Public-facing surfaces (categories + platform sub-pages) suppress
+     the Features grid and the Related section. Both expose too much
+     of the underlying methodology and pillar names, which we want to
+     keep strategically vague. Only the deep workflow-agent pages —
+     reached by direct URL — still carry that level of detail. */
+  const hideDetails =
+    source.kind === "farm-management" ||
+    source.kind === "analysis" ||
+    source.kind === "platform"
+
+  /* Workflow steps on the category pages got too prescriptive — they
+     telegraph the four operating loops we'd rather demo in person.
+     Hide them on Stable & Syndicate and AI Nicking Analysis. Agent
+     and platform pages keep workflow for now. */
+  const hideWorkflow =
     source.kind === "farm-management" || source.kind === "analysis"
 
   return (
@@ -96,8 +107,9 @@ export function SolutionPageClient({ source }: { source: SolutionSource }) {
       content={content}
       intro={intro}
       extra={extra}
-      hideFeatures={isCategory}
-      hideRelated={isCategory}
+      hideFeatures={hideDetails}
+      hideWorkflow={hideWorkflow}
+      hideRelated={hideDetails}
     />
   )
 }

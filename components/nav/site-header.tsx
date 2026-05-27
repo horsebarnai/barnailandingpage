@@ -122,13 +122,21 @@ export function SiteHeader() {
                     className="relative"
                     onMouseEnter={() => scheduleOpen(menu.key)}
                   >
-                    <Link
-                      href={menu.href}
+                    {/* Trigger intentionally renders as a button — Platform
+                        and Solutions are dropdown-only; the top-level word
+                        doesn't navigate anywhere on its own. */}
+                    <button
+                      type="button"
                       onFocus={() => scheduleOpen(menu.key)}
+                      onClick={() =>
+                        setOpenMenu(isOpen ? null : menu.key)
+                      }
                       aria-expanded={isOpen}
                       aria-haspopup="true"
                       className={`group inline-flex items-center gap-1 px-3 py-2 text-sm font-medium transition-colors duration-200 ${
-                        active || isOpen ? "text-white" : "text-zinc-400 hover:text-white"
+                        active || isOpen
+                          ? "text-white"
+                          : "text-zinc-400 hover:text-white"
                       }`}
                     >
                       {menu.trigger}
@@ -138,7 +146,7 @@ export function SiteHeader() {
                         }`}
                         aria-hidden="true"
                       />
-                    </Link>
+                    </button>
                   </div>
                 )
               })}

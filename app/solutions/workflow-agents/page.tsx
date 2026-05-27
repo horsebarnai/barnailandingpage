@@ -10,6 +10,7 @@ import { Container } from "@/components/layout/container"
 import { Section, SectionHeader } from "@/components/layout/section"
 import { TemplateCTA } from "@/components/templates/solution-page"
 import { RegulatoryCompliance } from "@/components/landing/regulatory-compliance"
+import { UntangleScroll } from "@/components/landing/untangle-scroll"
 
 const TRAITS = [
   {
@@ -38,12 +39,16 @@ export default function WorkflowAgentsHubPage() {
         titleAccent="always on."
         kicker="A roster of AI workers, each tuned to a recurring task in your operation. They show up before you ask. They finish before you notice. They never ask for credit."
         crumbs={[
-          { name: "Solutions", href: "/solutions" },
+          { name: "Solutions" },
           { name: "Workflow Agents" },
         ]}
         primaryCta={{ name: "Book a Demo", href: "/book-a-demo" }}
         secondaryCta={{ name: "Talk to Sales", href: "/contact" }}
       />
+
+      {/* Chaos → clarity: scroll-pinned visual showing eight operational
+          surfaces resolving from a tangle into a clean grid. */}
+      <UntangleScroll />
 
       {/* Three traits — what makes the roster different */}
       <Section rhythm="default" className="border-t border-white/[0.04]">

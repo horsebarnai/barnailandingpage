@@ -67,10 +67,6 @@ export function HiddenTax() {
               The cost compounds, invisibly — paid in hours, in attention, and
               in the decisions you never had time to make.
             </p>
-            <p className="mt-5 font-display italic text-base lg:text-lg text-zinc-500 leading-relaxed border-l-2 border-emerald-500/40 pl-5">
-              You command an asset class that moves the world. Until now, you
-              have run it with the tools of a hobbyist.
-            </p>
           </motion.div>
 
           {/* Facet stack */}

@@ -48,7 +48,9 @@ export type WorkflowAgentSlug = (typeof WORKFLOW_AGENT_SLUGS)[number]
 
 function agentCrumbs(name: string) {
   return [
-    { name: "Solutions", href: "/solutions" },
+    /* Solutions is now a non-clickable nav dropdown — drop the href so
+       the crumb renders as plain text, not a broken link. */
+    { name: "Solutions" },
     { name: "Workflow Agents", href: "/solutions/workflow-agents" },
     { name },
   ]
@@ -990,7 +992,7 @@ export const farmManagement: SolutionContent = {
   kicker:
     "Every dollar accounted for. Every partner on the same page. Records that arrive before you ask for them — the operating discipline of a private bank, applied to the work of a serious barn.",
   crumbs: [
-    { name: "Solutions", href: "/solutions" },
+    { name: "Solutions" },
     { name: "Stable & Syndicate Management" },
   ],
 
@@ -1112,7 +1114,7 @@ export const analysis: SolutionContent = {
   kicker:
     "The question every breeder asks — answered defensibly by the only model trained on fifty years of comparable outcomes. Bring a shortlist. Leave with a ranked, signed decision.",
   crumbs: [
-    { name: "Solutions", href: "/solutions" },
+    { name: "Solutions" },
     { name: "AI Nicking Analysis" },
   ],
 

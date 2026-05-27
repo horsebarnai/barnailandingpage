@@ -7,11 +7,13 @@ import { PageHero } from "@/components/layout/page-hero"
 import { Container } from "@/components/layout/container"
 import { Section, SectionHeader } from "@/components/layout/section"
 import { TemplateCTA } from "@/components/templates/solution-page"
+import { DataMoat } from "@/components/landing/data-moat"
+import { VALUE_PILLARS } from "@/lib/site-content/value-pillars"
 
 export const metadata: Metadata = {
   title: "About · Barn AI",
   description:
-    "The story behind Barn AI — and why the equine industry deserves an institutional-grade operating system of its own.",
+    "The team, the principles, and the four standards Barn AI holds itself to.",
 }
 
 const PRINCIPLES = [
@@ -45,49 +47,78 @@ export default function AboutPage() {
         secondaryCta={{ name: "Contact Us", href: "/contact" }}
       />
 
-      {/* Mission */}
+      {/* Four Pillars — the standards the operating system holds itself to.
+          Moved here from the retired /platform overview. */}
       <Section rhythm="default" className="border-t border-white/[0.04]">
         <Container>
-          <div className="grid lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20 items-start">
-            <div className="lg:sticky lg:top-28">
-              <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-emerald-400/90 mb-4">
-                Mission
-              </div>
-              <h2 className="font-display text-3xl lg:text-4xl font-medium leading-tight tracking-tight text-white">
-                Build the back office the equine industry has always needed.
-              </h2>
-            </div>
-            <div className="space-y-6 text-lg leading-relaxed text-zinc-300">
-              <p>
-                You command an asset class that moves the world. Until recently,
-                you have run it with the tools of a hobbyist — twenty owners
-                across twenty text threads, breeding certificates hunted by
-                phone, settlements that take weeks, disputes that strain
-                relationships.
-              </p>
-              <p>
-                That is over. Barn AI brings together every recurring workflow
-                in the operation of a modern barn — settlement, syndicate
-                reporting, compliance, vet records, race fit, breeding
-                analytics — and turns each one into a continuous, auditable,
-                premium experience.
-              </p>
-              <p className="text-zinc-400 italic">
-                The administrative friction of the business does not disappear.
-                It moves below the surface.
-              </p>
-            </div>
+          <SectionHeader
+            eyebrow="The Four Pillars"
+            title="What we hold"
+            titleAccent="ourselves to."
+            kicker="Every line of work on Barn AI sits under one of these four standards — and we measure ourselves against the outcome, not the technique."
+          />
+
+          <div className="mt-12 grid gap-5 md:grid-cols-2">
+            {VALUE_PILLARS.map((p, i) => {
+              const Icon = p.icon
+              return (
+                <Link
+                  key={p.key}
+                  href={p.href}
+                  className="group relative flex flex-col overflow-hidden rounded-2xl border border-zinc-800/70 bg-zinc-950/60 p-7 backdrop-blur-sm transition-all duration-500 hover:border-emerald-500/40 hover:shadow-[0_0_60px_-20px_rgba(16,185,129,0.4)] lg:p-9"
+                >
+                  <div className="pointer-events-none absolute inset-0 rounded-2xl bg-gradient-to-br from-emerald-500/[0.04] to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
+
+                  <div className="relative flex h-full flex-col">
+                    <div className="mb-6 flex items-start justify-between">
+                      <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-zinc-800 bg-zinc-900/70 transition-all duration-300 group-hover:border-emerald-500/40 group-hover:bg-emerald-500/[0.06]">
+                        <Icon
+                          className="h-5 w-5 text-emerald-400"
+                          strokeWidth={1.6}
+                          aria-hidden="true"
+                        />
+                      </div>
+                      <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-700 tabular-nums">
+                        Pillar / {String(i + 1).padStart(2, "0")}
+                      </span>
+                    </div>
+
+                    <h3 className="mb-2 font-display text-2xl font-medium leading-snug text-white">
+                      {p.name}
+                    </h3>
+                    <p className="mb-5 text-[13.5px] leading-snug text-emerald-300/80 italic">
+                      {p.tagline}
+                    </p>
+
+                    <p className="text-[14.5px] leading-relaxed text-zinc-400 flex-grow">
+                      {p.body}
+                    </p>
+
+                    <div className="mt-7 pt-5 border-t border-zinc-800/60 flex items-center justify-between">
+                      <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-emerald-400/70">
+                        Go deeper
+                      </span>
+                      <ArrowUpRight
+                        className="h-4 w-4 text-zinc-600 transition-all group-hover:text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                        aria-hidden="true"
+                      />
+                    </div>
+                  </div>
+                </Link>
+              )
+            })}
           </div>
         </Container>
       </Section>
 
-      {/* Principles */}
+      {/* Architectural anchor */}
+      <DataMoat />
+
+      {/* Principles — distinct from the pillars: these are how we BUILD,
+          not what we deliver. */}
       <Section rhythm="default" className="border-t border-white/[0.04]">
         <Container>
-          <SectionHeader
-            eyebrow="Principles"
-            title="What we build for."
-          />
+          <SectionHeader eyebrow="Principles" title="How we work." />
 
           <div className="mt-12 grid gap-5 md:grid-cols-3">
             {PRINCIPLES.map((p) => {
@@ -155,10 +186,10 @@ export default function AboutPage() {
 
       <TemplateCTA
         cta={{
-          title: "Build with us.",
-          titleAccent: "Run on us.",
+          title: "We work with a few operators",
+          titleAccent: "at a time.",
           kicker:
-            "We're working with a small set of partners as we move out of private beta. If you operate at the institutional level, we'd like to talk.",
+            "Private beta is invite-only and intentionally narrow. If you run at the institutional level, tell us about your operation — no pitch, just a working session.",
         }}
       />
     </PageShell>

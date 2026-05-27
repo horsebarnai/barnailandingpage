@@ -93,10 +93,10 @@ export function Hero() {
                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
               </Link>
               <Link
-                href="/platform"
+                href="/about"
                 className="inline-flex items-center gap-2 rounded-full border border-zinc-700 bg-zinc-900/40 px-7 py-3.5 text-sm font-semibold text-zinc-200 transition-all duration-300 hover:border-zinc-500 hover:bg-zinc-900/70 hover:text-white"
               >
-                Explore the Platform
+                About Barn AI
               </Link>
             </motion.div>
           </div>

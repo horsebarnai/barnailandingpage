@@ -57,7 +57,7 @@ export function SiteFooter() {
         {/* Bottom bar */}
         <div className="mt-12 pt-7 border-t border-white/5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
           <p className="text-xs text-zinc-500">
-            © {new Date().getFullYear()} Barn AI. All rights reserved.
+            © {new Date().getFullYear()} Barn AI, Inc. All rights reserved.
           </p>
           <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-600 flex items-center gap-2">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(74,222,128,0.7)]" />

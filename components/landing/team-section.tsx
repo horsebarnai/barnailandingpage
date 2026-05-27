@@ -6,26 +6,26 @@ const founders = [
   {
     name: "Om Kanmadikar",
     initials: "OK",
-    role: "FOUNDER & CHIEF EXECUTIVE OFFICER",
-    bio: "Serial entrepreneur, technical builder, and attorney. Leads product vision, engineering, and legal strategy. Former nationally ranked youth chess player & 2014 Kentucky Junior Chess Champion. Background in law, capital markets, strategy. JD, University of Kentucky.",
+    role: "FOUNDER & CEO",
+    bio: "Serial entrepreneur and attorney. Leads product vision, engineering, and legal strategy. Former nationally ranked youth chess player & 2014 Kentucky Junior Chess Champion. Background in law, capital markets, strategy. JD, University of Kentucky.",
   },
   {
     name: "Bill Murphy",
     initials: "BM",
-    role: "CO-FOUNDER & CHIEF EQUINE OFFICER",
+    role: "CO-FOUNDER & SENIOR ADVISOR, EQUINE",
     bio: "Lifelong horseman. Raised in Central Kentucky's thoroughbred industry — multi-generational relationships across Lexington's farms, stallion stations, and auction houses. Background across equine and global equine transport. BA Finance, Transylvania University.",
-  },
-  {
-    name: "Dale Browning",
-    initials: "DB",
-    role: "CHIEF FINANCIAL OFFICER",
-    bio: "Established veteran, 20+ years across finance, strategy, and AI from startups to Fortune 500. Deloitte, Humana. BSBA, University of Louisville.",
   },
   {
     name: "Mukund Venkatakrishnan",
     initials: "MV",
-    role: "HEAD OF INNOVATION AND STRATEGY",
+    role: "SENIOR ADVISOR, INNOVATION & STRATEGY",
     bio: "2x founder. Sold first med-tech company within Schmidt Futures. Current CEO of UpFront. Background across Box Group, crypto, and real-world assets. Pure Math & Philosophy, Harvard College.",
+  },
+  {
+    name: "Dale Browning",
+    initials: "DB",
+    role: "CFO",
+    bio: "20+ years across finance, strategy, and AI from startups to Fortune 500. Deloitte, Humana. BSBA, University of Louisville.",
   },
 ]
 
@@ -46,8 +46,8 @@ export function TeamSection() {
           </h2>
         </motion.div>
 
-        {/* Founders Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* Founders Grid — 2×2 on tablet and up, stacked on mobile */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-4xl mx-auto">
           {founders.map((founder, index) => (
             <motion.div
               key={founder.name}

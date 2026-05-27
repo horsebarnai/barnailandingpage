@@ -59,7 +59,7 @@ export type SolutionContent = {
   eyebrow: string
   title: string
   titleAccent?: string
-  kicker: string
+  kicker?: string
   crumbs: Crumb[]
 
   // Summary
@@ -461,18 +461,10 @@ export function TemplateCTA({
 /* ─── The full template ────────────────────────────────────── */
 
 export type SolutionTemplateOptions = {
-  /* Optional editorial block rendered between Hero and the rest of
-     the template — used to drop in a brand-marketing section that
-     should land before the operational content (e.g. BarnOS on
-     Stable & Syndicate Management). */
   intro?: React.ReactNode
-  /* Optional visual centerpiece rendered between Output and Related —
-     used to drop in an existing premium landing component on its
-     natural home (e.g. SettlementWaterfall on /farm-management). */
   extra?: React.ReactNode
-  /* Category pages suppress detailed Feature + Related grids so the
-     page acts as a directory, not a methodology disclosure. */
   hideFeatures?: boolean
+  hideWorkflow?: boolean
   hideRelated?: boolean
 }
 
@@ -481,6 +473,7 @@ export function SolutionPageTemplate({
   intro,
   extra,
   hideFeatures = false,
+  hideWorkflow = false,
   hideRelated = false,
 }: {
   content: SolutionContent
@@ -498,7 +491,7 @@ export function SolutionPageTemplate({
       />
       {intro}
       {!hideFeatures && <FeaturesSection features={content.features} />}
-      <WorkflowSection workflow={content.workflow} />
+      {!hideWorkflow && <WorkflowSection workflow={content.workflow} />}
       <OutputSection output={content.output} />
       {extra}
       {!hideRelated && <RelatedSection related={content.related} />}

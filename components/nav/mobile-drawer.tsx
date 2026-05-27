@@ -119,14 +119,6 @@ export function MobileDrawer({
                             className="overflow-hidden"
                           >
                             <div className="px-4 pt-2 pb-3 space-y-4">
-                              <Link
-                                href={menu.href}
-                                onClick={onClose}
-                                className="block text-[11px] font-mono uppercase tracking-[0.2em] text-emerald-400 hover:text-emerald-300 transition-colors"
-                              >
-                                View {menu.trigger} overview →
-                              </Link>
-
                               {menu.groups.map((group) => (
                                 <div key={group.title} className="space-y-1.5">
                                   <Link

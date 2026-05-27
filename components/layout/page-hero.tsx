@@ -65,11 +65,9 @@ export function PageHero({
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
-          {eyebrow && (
-            <div className="mb-5 font-mono text-[11px] uppercase tracking-[0.3em] text-emerald-400/90">
-              {eyebrow}
-            </div>
-          )}
+          {/* Eyebrow intentionally not rendered — the nav already carries
+              the section label, so repeating it just below the header
+              read as a duplicate. Breadcrumbs handle the hierarchy. */}
 
           <h1
             className={cn(

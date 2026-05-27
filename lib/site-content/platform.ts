@@ -40,7 +40,9 @@ export type PlatformTopicSlug = (typeof PLATFORM_TOPIC_SLUGS)[number]
 
 function topicCrumbs(name: string) {
   return [
-    { name: "Platform", href: "/platform" },
+    /* Platform is now a non-clickable nav dropdown — drop the href so
+       the crumb renders as plain text, not a broken link. */
+    { name: "Platform" },
     { name },
   ]
 }
@@ -448,8 +450,6 @@ const intelligenceNetwork: SolutionContent = {
   eyebrow: "Platform · Intelligence Network",
   title: "Decisions backed by",
   titleAccent: "fifty years of outcomes.",
-  kicker:
-    "Proprietary models trained on decades of bloodstock, race, and transactional history. The only intelligence layer that knows what happened next.",
   crumbs: topicCrumbs("Intelligence Network"),
 
   summary: {
