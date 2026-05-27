@@ -1,37 +1,39 @@
-"use client"
-
-import { Header } from "@/components/landing/header"
+import { PageShell } from "@/components/layout/page-shell"
 import { Hero } from "@/components/landing/hero"
-import { GeneticSandbox } from "@/components/landing/genetic-sandbox"
-import { HeritageDepth } from "@/components/landing/heritage-depth"
-import { SovereigntyVault } from "@/components/landing/sovereignty-vault"
-import { ShowcaseTabs } from "@/components/landing/showcase-tabs"
-import { DataMoat } from "@/components/landing/data-moat"
+import { HiddenTax } from "@/components/landing/hidden-tax"
+import { SolutionsTriptych } from "@/components/landing/solutions-triptych"
+import { ValuePillars } from "@/components/landing/value-pillars"
 import { OldVsNew } from "@/components/landing/old-vs-new"
+import { TrustAndDiscretion } from "@/components/landing/trust-discretion"
 import { TimeSavedCalculator } from "@/components/landing/time-saved-calculator"
-import { RegulatoryCompliance } from "@/components/landing/regulatory-compliance"
-import { SettlementWaterfall } from "@/components/landing/settlement-waterfall"
-import { CTASection } from "@/components/landing/cta-section"
-import { TeamSection } from "@/components/landing/team-section"
-import { Footer } from "@/components/landing/footer"
+import { HomeCTA } from "@/components/landing/home-cta"
 
-export default function LandingPage() {
+/* Landing page composition — a tightened narrative arc:
+ *   Hero            → who we are + reach us
+ *   HiddenTax       → the problem
+ *   SolutionsTrip   → what we do — three lanes, three diagrams
+ *   ValuePillars    → the four standards the platform holds itself to
+ *   OldVsNew        → before / after, in concrete pain
+ *   Trust           → editorial close on privacy + stewardship
+ *   TimeSaved       → tangible math
+ *   HomeCTA         → convert
+ *
+ * The Barn Operating System editorial block moved to
+ * /solutions/farm-management (Stable & Syndicate Management) —
+ * its natural home now that Solutions = WHAT.
+ */
+
+export default function HomePage() {
   return (
-    <main className="min-h-screen bg-black">
-      <Header />
+    <PageShell>
       <Hero />
-      <ShowcaseTabs />
-      <DataMoat />
+      <HiddenTax />
+      <SolutionsTriptych />
+      <ValuePillars />
       <OldVsNew />
+      <TrustAndDiscretion />
       <TimeSavedCalculator />
-      <RegulatoryCompliance />
-      <GeneticSandbox />
-      <HeritageDepth />
-      <SovereigntyVault />
-      <SettlementWaterfall />
-      <TeamSection />
-      <CTASection />
-      <Footer />
-    </main>
+      <HomeCTA />
+    </PageShell>
   )
 }
