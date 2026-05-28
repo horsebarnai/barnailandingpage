@@ -52,7 +52,7 @@ export default function AboutPage() {
       <Section rhythm="default" className="border-t border-white/[0.04]">
         <Container>
           <SectionHeader
-            eyebrow="The Four Pillars"
+            eyebrow="Four Standards"
             title="What we hold"
             titleAccent="ourselves to."
             kicker="Every line of work on Barn AI sits under one of these four standards — and we measure ourselves against the outcome, not the technique."
@@ -79,7 +79,7 @@ export default function AboutPage() {
                         />
                       </div>
                       <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-zinc-700 tabular-nums">
-                        Pillar / {String(i + 1).padStart(2, "0")}
+                        / {String(i + 1).padStart(2, "0")}
                       </span>
                     </div>
 

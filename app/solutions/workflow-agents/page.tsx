@@ -39,7 +39,7 @@ export default function WorkflowAgentsHubPage() {
         titleAccent="always on."
         kicker="A roster of AI workers, each tuned to a recurring task in your operation. They show up before you ask. They finish before you notice. They never ask for credit."
         crumbs={[
-          { name: "Solutions" },
+          { name: "Products" },
           { name: "Workflow Agents" },
         ]}
         primaryCta={{ name: "Book a Demo", href: "/book-a-demo" }}

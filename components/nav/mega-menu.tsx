@@ -35,26 +35,27 @@ export function MegaMenu({ menu }: { menu: MegaMenuType }) {
           )}
         </div>
 
-        {/* Footer rule — overview link + CTA. We only show the
-            "view all" link when we have sub-items the user might
-            want to expand into; otherwise the pillars themselves
-            are the destinations. */}
-        <div className="mt-10 pt-6 border-t border-white/5 flex items-center justify-between">
-          {hasItems ? (
+        {/* Footer rule — Book a Demo CTA always anchors the right.
+            When a menu has sub-items, an "overview" link sits at left;
+            otherwise (pillar / lane menus) the cards above ARE the
+            destinations and the left side is intentionally empty. */}
+        <div
+          className={cn(
+            "mt-10 pt-6 border-t border-white/5 flex items-center",
+            hasItems ? "justify-between" : "justify-end",
+          )}
+        >
+          {hasItems && (
             <Link
               href={menu.href}
               className="group inline-flex items-center gap-2 text-sm text-zinc-400 hover:text-white transition-colors"
             >
-              <span>View {menu.trigger.toLowerCase()} overview</span>
+              <span>View overview</span>
               <ArrowUpRight
                 className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                 aria-hidden="true"
               />
             </Link>
-          ) : (
-            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-600">
-              {menu.trigger} · Outcomes, not features
-            </span>
           )}
           <Link
             href="/book-a-demo"
@@ -127,10 +128,7 @@ function PillarCard({
       <div className="pointer-events-none absolute inset-0 rounded-xl bg-gradient-to-br from-emerald-500/[0.04] to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
       <div className="relative flex h-full flex-col">
-        <div className="mb-3 flex items-start justify-between">
-          <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-emerald-400/80 transition-colors group-hover:text-emerald-300">
-            Pillar
-          </span>
+        <div className="mb-3 flex items-start justify-end">
           <ArrowUpRight
             className="h-3.5 w-3.5 text-zinc-600 transition-all group-hover:text-emerald-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
             aria-hidden="true"

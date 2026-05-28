@@ -36,10 +36,10 @@ export function ValuePillars() {
 
       <Container>
         <SectionHeader
-          eyebrow="The Platform · Four Pillars"
+          eyebrow="How We Do It"
           title="Four standards."
-          titleAccent="The platform answers to all of them."
-          kicker="We measure the operating system against four outcomes. Tap any pillar to see what it means in practice."
+          titleAccent="The operating system answers to all of them."
+          kicker="We measure ourselves against four outcomes. Tap any standard to see what it means in practice."
           align="center"
         />
 
@@ -83,7 +83,7 @@ export function ValuePillars() {
 
                     <div className="min-w-0 flex-1">
                       <div className="mb-1 font-mono text-[10px] uppercase tracking-[0.25em] text-emerald-400/70 tabular-nums">
-                        Pillar / {String(i + 1).padStart(2, "0")}
+                        / {String(i + 1).padStart(2, "0")}
                       </div>
                       <div className="font-display text-xl lg:text-2xl font-medium leading-tight text-white">
                         {pillar.name}

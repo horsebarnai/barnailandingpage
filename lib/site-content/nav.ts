@@ -39,7 +39,7 @@ export type MegaMenu = {
 
 export const platformMenu: MegaMenu = {
   key: "platform",
-  trigger: "Platform",
+  trigger: "How We Do It",
   href: "/platform",
   groups: VALUE_PILLARS.map((p) => ({
     title: p.name,
@@ -71,7 +71,7 @@ export const SOLUTIONS = [
 
 export const solutionsMenu: MegaMenu = {
   key: "solutions",
-  trigger: "Solutions",
+  trigger: "Products",
   href: "/solutions",
   groups: SOLUTIONS.map((s) => ({
     title: s.title,

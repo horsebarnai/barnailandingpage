@@ -40,9 +40,9 @@ export type PlatformTopicSlug = (typeof PLATFORM_TOPIC_SLUGS)[number]
 
 function topicCrumbs(name: string) {
   return [
-    /* Platform is now a non-clickable nav dropdown — drop the href so
-       the crumb renders as plain text, not a broken link. */
-    { name: "Platform" },
+    /* "How We Do It" is now a non-clickable nav dropdown — drop the href
+       so the crumb renders as plain text, not a broken link. */
+    { name: "How We Do It" },
     { name },
   ]
 }
