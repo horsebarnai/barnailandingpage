@@ -134,29 +134,44 @@ body {
     @apply bg-background text-foreground;
   }
 
-  /* Italic emerald accents use `bg-clip-text text-transparent` to paint
-     the text with a gradient. Italic glyphs slant past their painted
-     bounding box on the right; combined with the `overflow-hidden`
-     containers most sections use for blur effects, the last letter of
-     every italic accent gets clipped. Give every italic span a small
-     trailing run-out so the overhang has room to render.
+  /* ------------------------------------------------------------------
+     Italic glyph clipping — two-layer fix.
 
-     Targeted enough that it doesn't affect non-clipped italic text
-     (which is rare on this site anyway). */
+     Problem: italic glyphs slant past their geometric bounding box.
+     Two things conspire to clip the trailing slant:
+       (a) `bg-clip-text text-transparent` paints only inside the
+           text-box, so any italic overhang has no gradient to show.
+       (b) most sections wrap content in `overflow-hidden` (for blur
+           containment) which then hard-clips even the natural pixel
+           render of an italic glyph at every line wrap inside the
+           span — not just the very end.
+
+     Fix (a): extend the painting box of italic clip spans with a
+        trailing padding + margin so the gradient fills the overhang.
+
+     Fix (b): replace `overflow: hidden` site-wide with
+        `overflow: clip` + a small `overflow-clip-margin`. Visually
+        identical for blur containment, but lets glyph overhang bleed
+        past the clip line by the margin amount before getting cut.
+        (`overflow: clip` is a hard pixel clip — no scroll context,
+        supported in every modern browser since 2022.)
+     ------------------------------------------------------------------ */
+
   .italic.bg-clip-text {
-    padding-inline-end: 0.12em;
+    padding-inline-end: 0.18em;
     margin-inline-end: 0.04em;
   }
 
-  /* Same problem hits italic spans inside `bg-clip-text` parents — and
-     a handful of standalone italic accents (CTA labels, button text).
-     A faint trailing margin keeps them clear of right-side clipping
-     without measurable layout cost. */
   em,
   i,
   .font-display.italic,
   span.italic {
-    padding-inline-end: 0.04em;
+    padding-inline-end: 0.06em;
+  }
+
+  .overflow-hidden {
+    overflow: clip;
+    overflow-clip-margin: 0.6em;
   }
 }
 
