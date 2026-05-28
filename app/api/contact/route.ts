@@ -2,11 +2,36 @@ import { NextResponse } from "next/server"
 import { contactSchema } from "@/lib/contact-schema"
 import { getSupabaseAdmin } from "@/lib/supabase-admin"
 import { sendContactNotification } from "@/lib/notify-email"
+import { clientIp, rateLimit } from "@/lib/rate-limit"
 
 export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
 
+/* Rate limit policy: 3 submissions per minute per IP. Humans
+   filling out a form rarely exceed this even on a typo retry,
+   but it stops a bot from spamming the inbox in seconds. */
+const CONTACT_LIMIT = 3
+const CONTACT_WINDOW_MS = 60_000
+
 export async function POST(request: Request) {
+  // Rate limit before parsing the body — protects the JSON parser
+  // and the database from a flood of requests, not just the success path.
+  const ip = clientIp(request)
+  const limited = rateLimit({
+    key: `contact:${ip}`,
+    limit: CONTACT_LIMIT,
+    windowMs: CONTACT_WINDOW_MS,
+  })
+  if (!limited.ok) {
+    return NextResponse.json(
+      { ok: false, error: "rate_limited" },
+      {
+        status: 429,
+        headers: { "Retry-After": String(limited.retryAfterSeconds) },
+      },
+    )
+  }
+
   let raw: unknown
   try {
     raw = await request.json()
