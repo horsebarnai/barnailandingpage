@@ -2,7 +2,6 @@
 
 import Script from "next/script"
 import { motion } from "framer-motion"
-import { CheckCircle2 } from "lucide-react"
 
 import { PageShell } from "@/components/layout/page-shell"
 import { PageHero } from "@/components/layout/page-hero"
@@ -11,11 +10,31 @@ import { Section } from "@/components/layout/section"
 
 const CALENDLY_URL = "https://calendly.com/om-horsebarn/30min"
 
-const EXPECTATIONS = [
-  "A 30-minute working session with a member of the founding team.",
-  "A live walkthrough of the modules most relevant to your operation.",
-  "Honest answers on fit, scope, and onboarding timeline.",
-  "No hard sell — we work with a small set of partners.",
+const SCHEDULE = [
+  {
+    time: "0–5 min",
+    title: "Your operation",
+    detail:
+      "Bring a real scenario — a syndicate, a breeding shortlist, a settlement. We start where you are.",
+  },
+  {
+    time: "5–20 min",
+    title: "Live walkthrough",
+    detail:
+      "A working demo of the modules most relevant to your operation, run on real data.",
+  },
+  {
+    time: "20–27 min",
+    title: "Fit & scope",
+    detail:
+      "Honest answers on fit, scope, and the onboarding timeline — including where we're not a fit.",
+  },
+  {
+    time: "27–30 min",
+    title: "Next steps",
+    detail:
+      "No hard sell. We work with a small set of partners, so we'll be straight about what's next.",
+  },
 ] as const
 
 export default function BookADemoPage() {
@@ -49,25 +68,30 @@ export default function BookADemoPage() {
                 What to expect
               </div>
               <h2 className="font-display text-2xl lg:text-3xl font-medium leading-tight tracking-tight text-white mb-6">
-                Working session,{" "}
+                How the 30 minutes{" "}
                 <span className="bg-gradient-to-r from-emerald-400 via-emerald-300 to-emerald-500 bg-clip-text italic text-transparent">
-                  not a sales pitch.
+                  actually go.
                 </span>
               </h2>
-              <ul className="space-y-4">
-                {EXPECTATIONS.map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <CheckCircle2
-                      className="mt-0.5 h-5 w-5 flex-shrink-0 text-emerald-400"
-                      strokeWidth={1.7}
+              <ol className="relative space-y-7 border-l border-zinc-800/70 pl-7">
+                {SCHEDULE.map((item) => (
+                  <li key={item.time} className="relative">
+                    <span
+                      className="absolute -left-[calc(1.75rem+1px)] top-1.5 h-3 w-3 -translate-x-1/2 rounded-full border-2 border-emerald-400 bg-zinc-950 shadow-[0_0_10px_rgba(16,185,129,0.6)]"
                       aria-hidden="true"
                     />
-                    <span className="text-sm sm:text-base text-zinc-300 leading-relaxed">
-                      {item}
-                    </span>
+                    <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-emerald-400/90">
+                      {item.time}
+                    </div>
+                    <div className="mt-1 text-sm sm:text-base font-medium text-white">
+                      {item.title}
+                    </div>
+                    <p className="mt-1 text-sm text-zinc-400 leading-relaxed">
+                      {item.detail}
+                    </p>
                   </li>
                 ))}
-              </ul>
+              </ol>
 
               <div className="mt-10 pt-8 border-t border-zinc-800/60">
                 <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-zinc-500 mb-2">
