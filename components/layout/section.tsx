@@ -21,7 +21,15 @@ export function Section({
     <Tag
       id={id}
       className={cn(
-        "relative",
+        /* `overflow-clip` keeps the giant decorative blur halos that
+           sit absolutely-positioned inside many sections (some are
+           1020px wide) from leaking past the viewport on mobile and
+           inflating the document width.
+
+           `clip` rather than `hidden` so any `lg:sticky` descendants
+           continue to chain up to the document scroll context;
+           `clip` does not establish a scroll container. */
+        "relative overflow-clip",
         rhythm === "tight" && "py-12 lg:py-16",
         rhythm === "default" && "py-20 lg:py-28",
         rhythm === "loose" && "py-24 lg:py-36",
