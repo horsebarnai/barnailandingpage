@@ -7,11 +7,12 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Custom cursor — emerald triangle from /public/cursor.svg.
-   Hotspot at the tip (3, 3). Buttons / links keep native pointer. */
+/* Custom cursor — 3D gold pointer from /public/cursor-gold.svg.
+   Premium accent against the dark institutional palette. Hotspot
+   at the tip (3, 3). Buttons / links keep native pointer. */
 html,
 body {
-  cursor: url('/cursor.svg') 3 3, auto;
+  cursor: url('/cursor-gold.svg') 3 3, auto;
 }
 
 :root {

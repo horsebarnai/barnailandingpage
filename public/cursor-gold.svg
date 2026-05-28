@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none">
+  <defs>
+    <!-- Main gold gradient: highlight cream → saturated gold → deep amber -->
+    <linearGradient id="goldBody" x1="25%" y1="5%" x2="80%" y2="95%">
+      <stop offset="0%" stop-color="#FFF4C4"/>
+      <stop offset="22%" stop-color="#FFD84A"/>
+      <stop offset="55%" stop-color="#F2B500"/>
+      <stop offset="85%" stop-color="#A87000"/>
+      <stop offset="100%" stop-color="#6B4400"/>
+    </linearGradient>
+
+    <!-- Top-left specular highlight -->
+    <linearGradient id="goldShine" x1="10%" y1="10%" x2="90%" y2="80%">
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.95"/>
+      <stop offset="55%" stop-color="#FFFFFF" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Soft drop shadow under the arrow for elevation -->
+    <radialGradient id="dropShadow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#000" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Drop shadow (offset slightly down-right for elevation feel) -->
+  <ellipse cx="13" cy="26" rx="9" ry="2" fill="url(#dropShadow)"/>
+
+  <!-- Main arrow body — gold gradient with crisp dark outline -->
+  <path
+    d="M 3 3
+       L 3 22.5
+       L 8.5 18
+       L 12 26.5
+       L 15.5 25
+       L 12 16.5
+       L 20 16.5
+       Z"
+    fill="url(#goldBody)"
+    stroke="#2F1F00"
+    stroke-width="1.2"
+    stroke-linejoin="round"
+    stroke-linecap="round"/>
+
+  <!-- Inner specular highlight on the top-left bevel -->
+  <path
+    d="M 4.6 4
+       L 4.6 15
+       L 8 12
+       L 10 9
+       Z"
+    fill="url(#goldShine)"/>
+</svg>
